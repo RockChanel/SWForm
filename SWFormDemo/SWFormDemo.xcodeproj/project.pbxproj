@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E83F3F3120BC000C00FC47ED /* SWFormInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E83F3F3020BC000C00FC47ED /* SWFormInputCell.m */; };
+		E83F3F4020BC093C00FC47ED /* SWFormBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E83F3F3F20BC093C00FC47ED /* SWFormBaseController.m */; };
+		E83F3F4920BC0BC000FC47ED /* SWFormCommonController.m in Sources */ = {isa = PBXBuildFile; fileRef = E83F3F4820BC0BC000FC47ED /* SWFormCommonController.m */; };
+		E85C6E7F20BBEC4F00BFDC01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E7E20BBEC4F00BFDC01 /* AppDelegate.m */; };
+		E85C6E8220BBEC4F00BFDC01 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E8120BBEC4F00BFDC01 /* ViewController.m */; };
+		E85C6E8520BBEC4F00BFDC01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85C6E8320BBEC4F00BFDC01 /* Main.storyboard */; };
+		E85C6E8720BBEC4F00BFDC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85C6E8620BBEC4F00BFDC01 /* Assets.xcassets */; };
+		E85C6E8A20BBEC4F00BFDC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85C6E8820BBEC4F00BFDC01 /* LaunchScreen.storyboard */; };
+		E85C6E8D20BBEC4F00BFDC01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E8C20BBEC4F00BFDC01 /* main.m */; };
+		E85C6E9720BBECF400BFDC01 /* SWFormItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E9620BBECF400BFDC01 /* SWFormItem.m */; };
+		E85C6E9B20BBF64D00BFDC01 /* SWFormBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E9A20BBF64D00BFDC01 /* SWFormBaseCell.m */; };
+		E85C6E9E20BBF67800BFDC01 /* SelwynExpandableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E9C20BBF67800BFDC01 /* SelwynExpandableTextView.m */; };
+		E85C6EA220BBF84500BFDC01 /* SWFormManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6EA120BBF84500BFDC01 /* SWFormManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E83F3F2F20BC000C00FC47ED /* SWFormInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormInputCell.h; sourceTree = "<group>"; };
+		E83F3F3020BC000C00FC47ED /* SWFormInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormInputCell.m; sourceTree = "<group>"; };
+		E83F3F3E20BC093C00FC47ED /* SWFormBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormBaseController.h; sourceTree = "<group>"; };
+		E83F3F3F20BC093C00FC47ED /* SWFormBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormBaseController.m; sourceTree = "<group>"; };
+		E83F3F4720BC0BC000FC47ED /* SWFormCommonController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormCommonController.h; sourceTree = "<group>"; };
+		E83F3F4820BC0BC000FC47ED /* SWFormCommonController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormCommonController.m; sourceTree = "<group>"; };
+		E85C6E7A20BBEC4F00BFDC01 /* SWFormDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWFormDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E85C6E7D20BBEC4F00BFDC01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E85C6E7E20BBEC4F00BFDC01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E85C6E8020BBEC4F00BFDC01 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E85C6E8120BBEC4F00BFDC01 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E85C6E8420BBEC4F00BFDC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E85C6E8620BBEC4F00BFDC01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E85C6E8920BBEC4F00BFDC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E85C6E8B20BBEC4F00BFDC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E85C6E8C20BBEC4F00BFDC01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E85C6E9520BBECF400BFDC01 /* SWFormItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormItem.h; sourceTree = "<group>"; };
+		E85C6E9620BBECF400BFDC01 /* SWFormItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormItem.m; sourceTree = "<group>"; };
+		E85C6E9920BBF64D00BFDC01 /* SWFormBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormBaseCell.h; sourceTree = "<group>"; };
+		E85C6E9A20BBF64D00BFDC01 /* SWFormBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormBaseCell.m; sourceTree = "<group>"; };
+		E85C6E9C20BBF67800BFDC01 /* SelwynExpandableTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelwynExpandableTextView.m; sourceTree = "<group>"; };
+		E85C6E9D20BBF67800BFDC01 /* SelwynExpandableTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelwynExpandableTextView.h; sourceTree = "<group>"; };
+		E85C6EA020BBF84500BFDC01 /* SWFormManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormManager.h; sourceTree = "<group>"; };
+		E85C6EA120BBF84500BFDC01 /* SWFormManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormManager.m; sourceTree = "<group>"; };
+		E85C6EA320BBF8CC00BFDC01 /* SWForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWForm.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E85C6E7720BBEC4F00BFDC01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E85C6E7120BBEC4F00BFDC01 = {
+			isa = PBXGroup;
+			children = (
+				E85C6E9320BBEC6000BFDC01 /* SWForm */,
+				E85C6E7C20BBEC4F00BFDC01 /* SWFormDemo */,
+				E85C6E7B20BBEC4F00BFDC01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E85C6E7B20BBEC4F00BFDC01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E85C6E7A20BBEC4F00BFDC01 /* SWFormDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E85C6E7C20BBEC4F00BFDC01 /* SWFormDemo */ = {
+			isa = PBXGroup;
+			children = (
+				E85C6E7D20BBEC4F00BFDC01 /* AppDelegate.h */,
+				E85C6E7E20BBEC4F00BFDC01 /* AppDelegate.m */,
+				E85C6E8020BBEC4F00BFDC01 /* ViewController.h */,
+				E85C6E8120BBEC4F00BFDC01 /* ViewController.m */,
+				E83F3F4720BC0BC000FC47ED /* SWFormCommonController.h */,
+				E83F3F4820BC0BC000FC47ED /* SWFormCommonController.m */,
+				E85C6E8320BBEC4F00BFDC01 /* Main.storyboard */,
+				E85C6E8620BBEC4F00BFDC01 /* Assets.xcassets */,
+				E85C6E8820BBEC4F00BFDC01 /* LaunchScreen.storyboard */,
+				E85C6E8B20BBEC4F00BFDC01 /* Info.plist */,
+				E85C6E8C20BBEC4F00BFDC01 /* main.m */,
+			);
+			path = SWFormDemo;
+			sourceTree = "<group>";
+		};
+		E85C6E9320BBEC6000BFDC01 /* SWForm */ = {
+			isa = PBXGroup;
+			children = (
+				E85C6EA320BBF8CC00BFDC01 /* SWForm.h */,
+				E83F3F3E20BC093C00FC47ED /* SWFormBaseController.h */,
+				E83F3F3F20BC093C00FC47ED /* SWFormBaseController.m */,
+				E85C6E9F20BBF82B00BFDC01 /* SWFormManager */,
+				E85C6E9420BBECE000BFDC01 /* SWFormItem */,
+				E85C6E9820BBF5FD00BFDC01 /* SWFormCell */,
+			);
+			path = SWForm;
+			sourceTree = "<group>";
+		};
+		E85C6E9420BBECE000BFDC01 /* SWFormItem */ = {
+			isa = PBXGroup;
+			children = (
+				E85C6E9520BBECF400BFDC01 /* SWFormItem.h */,
+				E85C6E9620BBECF400BFDC01 /* SWFormItem.m */,
+			);
+			path = SWFormItem;
+			sourceTree = "<group>";
+		};
+		E85C6E9820BBF5FD00BFDC01 /* SWFormCell */ = {
+			isa = PBXGroup;
+			children = (
+				E85C6E9920BBF64D00BFDC01 /* SWFormBaseCell.h */,
+				E85C6E9A20BBF64D00BFDC01 /* SWFormBaseCell.m */,
+				E83F3F2F20BC000C00FC47ED /* SWFormInputCell.h */,
+				E83F3F3020BC000C00FC47ED /* SWFormInputCell.m */,
+			);
+			path = SWFormCell;
+			sourceTree = "<group>";
+		};
+		E85C6E9F20BBF82B00BFDC01 /* SWFormManager */ = {
+			isa = PBXGroup;
+			children = (
+				E85C6EA020BBF84500BFDC01 /* SWFormManager.h */,
+				E85C6EA120BBF84500BFDC01 /* SWFormManager.m */,
+				E85C6E9D20BBF67800BFDC01 /* SelwynExpandableTextView.h */,
+				E85C6E9C20BBF67800BFDC01 /* SelwynExpandableTextView.m */,
+			);
+			path = SWFormManager;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E85C6E7920BBEC4F00BFDC01 /* SWFormDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E85C6E9020BBEC4F00BFDC01 /* Build configuration list for PBXNativeTarget "SWFormDemo" */;
+			buildPhases = (
+				E85C6E7620BBEC4F00BFDC01 /* Sources */,
+				E85C6E7720BBEC4F00BFDC01 /* Frameworks */,
+				E85C6E7820BBEC4F00BFDC01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SWFormDemo;
+			productName = SWFormDemo;
+			productReference = E85C6E7A20BBEC4F00BFDC01 /* SWFormDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E85C6E7220BBEC4F00BFDC01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = selwyn;
+				TargetAttributes = {
+					E85C6E7920BBEC4F00BFDC01 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = E85C6E7520BBEC4F00BFDC01 /* Build configuration list for PBXProject "SWFormDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E85C6E7120BBEC4F00BFDC01;
+			productRefGroup = E85C6E7B20BBEC4F00BFDC01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E85C6E7920BBEC4F00BFDC01 /* SWFormDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E85C6E7820BBEC4F00BFDC01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E85C6E8A20BBEC4F00BFDC01 /* LaunchScreen.storyboard in Resources */,
+				E85C6E8720BBEC4F00BFDC01 /* Assets.xcassets in Resources */,
+				E85C6E8520BBEC4F00BFDC01 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E85C6E7620BBEC4F00BFDC01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E85C6E9720BBECF400BFDC01 /* SWFormItem.m in Sources */,
+				E85C6E9E20BBF67800BFDC01 /* SelwynExpandableTextView.m in Sources */,
+				E83F3F3120BC000C00FC47ED /* SWFormInputCell.m in Sources */,
+				E85C6E9B20BBF64D00BFDC01 /* SWFormBaseCell.m in Sources */,
+				E83F3F4020BC093C00FC47ED /* SWFormBaseController.m in Sources */,
+				E85C6EA220BBF84500BFDC01 /* SWFormManager.m in Sources */,
+				E83F3F4920BC0BC000FC47ED /* SWFormCommonController.m in Sources */,
+				E85C6E8220BBEC4F00BFDC01 /* ViewController.m in Sources */,
+				E85C6E8D20BBEC4F00BFDC01 /* main.m in Sources */,
+				E85C6E7F20BBEC4F00BFDC01 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E85C6E8320BBEC4F00BFDC01 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E85C6E8420BBEC4F00BFDC01 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E85C6E8820BBEC4F00BFDC01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E85C6E8920BBEC4F00BFDC01 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E85C6E8E20BBEC4F00BFDC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E85C6E8F20BBEC4F00BFDC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E85C6E9120BBEC4F00BFDC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 28XRZ273MD;
+				INFOPLIST_FILE = SWFormDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.RockChanel.SWFormDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E85C6E9220BBEC4F00BFDC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 28XRZ273MD;
+				INFOPLIST_FILE = SWFormDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.RockChanel.SWFormDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E85C6E7520BBEC4F00BFDC01 /* Build configuration list for PBXProject "SWFormDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E85C6E8E20BBEC4F00BFDC01 /* Debug */,
+				E85C6E8F20BBEC4F00BFDC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E85C6E9020BBEC4F00BFDC01 /* Build configuration list for PBXNativeTarget "SWFormDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E85C6E9120BBEC4F00BFDC01 /* Debug */,
+				E85C6E9220BBEC4F00BFDC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E85C6E7220BBEC4F00BFDC01 /* Project object */;
+}
