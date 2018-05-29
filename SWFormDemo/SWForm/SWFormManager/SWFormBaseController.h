@@ -13,7 +13,14 @@
  */
 @interface SWFormBaseController : UIViewController
 
+/**
+ 表单tableView
+ */
 @property (nonatomic, strong) UITableView *formTableView;
+
+/**
+ 表单数据源，数据源格式应为 @[SWFormSection..]，否则断言会直接崩溃
+ */
 @property (nonatomic, strong) NSMutableArray *mutableItems;
 
 

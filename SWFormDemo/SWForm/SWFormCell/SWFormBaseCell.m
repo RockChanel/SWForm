@@ -10,6 +10,9 @@
 #import "SelwynExpandableTextView.h"
 #import "SWFormCompat.h"
 
+@interface SWFormBaseCell()<UITextViewDelegate>
+@end
+
 @implementation SWFormBaseCell
 
 - (UILabel *)titleLabel {
@@ -25,7 +28,7 @@
 - (SelwynExpandableTextView *)expandableTextView {
     if (!_expandableTextView) {
         _expandableTextView = [[SelwynExpandableTextView alloc]init];
-        //_expandableTextView.delegate = self;
+        _expandableTextView.delegate = self;
         _expandableTextView.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _expandableTextView.textContainer.lineFragmentPadding = 0;
         _expandableTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
@@ -43,13 +46,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

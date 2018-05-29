@@ -13,5 +13,8 @@ CGFloat const SW_InfoFont = 16.0f;
 CGFloat const SW_EdgeMargin = 10.0f;
 CGFloat const SW_TitleWidth = 100.0f;
 CGFloat const SW_TitleHeight = 24.0f;
+CGFloat const SW_DefaultItemHeight = 44.0f;
 
-NSInteger const SW_RequriedType = SWRequriedTypeRedStarFront;
+NSInteger const SW_TitleShowType = SWTitleShowTypeRedStarFront;
+NSInteger const SW_GlobalMaxInputLength = 200;
+NSInteger const SW_GlobalMaxImages = 6;

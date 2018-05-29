@@ -66,6 +66,11 @@ typedef NS_ENUM(NSInteger, SWFormItemType) {
 @property (nonatomic, strong) NSAttributedString *attributedPlaceholder;
 
 /**
+ 是否显示表单条目占位字符 YES:显示 NO:不显示
+ */
+@property (nonatomic, assign) BOOL showPlaceholder;
+
+/**
  图片附件条目图片
  */
 @property (nonatomic, strong) NSArray *images;
@@ -85,11 +90,29 @@ typedef NS_ENUM(NSInteger, SWFormItemType) {
  */
 @property (nonatomic, assign) BOOL required;
 
-@end
+/**
+ SWFormItemTypeInput 以及 SWFormItemTypeTextViewInput 类别中表示最大输入字数
+ 0 表示无限制
+ */
+@property (nonatomic, assign) NSInteger maxInputLength;
 
+/**
+ SWFormItemTypeImage 类别中表示最大选择图片数
+ 0 表示无限制(不建议)
+ */
+@property (nonatomic, assign) NSInteger maxImageCount;
+
+@end
 
 /**
  SWFormItemMake 快捷构建新增表单条目
+
+ @param title 标题
+ @param info 详情
+ @param itemType 条目类别
+ @param editable 是否可编辑
+ @param required 是否必填
+ @param keyboardType 键盘类别
  */
 FOUNDATION_EXPORT SWFormItem *SWFormItem_Add(NSString *title, NSString *info, SWFormItemType itemType, BOOL editable, BOOL required, UIKeyboardType keyboardType);
 

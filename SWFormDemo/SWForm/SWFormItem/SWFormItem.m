@@ -38,7 +38,9 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
 - (instancetype)initWithTitle:(NSString *)title info:(NSString *)info itemType:(SWFormItemType)itemType editable:(BOOL)editable required:(BOOL)required keyboardType:(UIKeyboardType)keyboardType images:(NSArray *)images showPlaceholder:(BOOL)showPlaceholder{
     self = [super init];
     if (self) {
-        self.defaultHeight = 44.0f;
+        self.defaultHeight = SW_DefaultItemHeight;
+        self.maxInputLength = SW_GlobalMaxInputLength;
+        self.maxImageCount = SW_GlobalMaxImages;
         self.title = title;
         self.info = info;
         self.itemType = itemType;
@@ -46,6 +48,7 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
         self.required = required;
         self.keyboardType = keyboardType;
         self.images = images;
+        self.showPlaceholder = showPlaceholder;
         [self sw_setPlaceholderWithShow:showPlaceholder];
         [self sw_setAttributedTitleWithRequired:required title:title itemType:itemType];
     }
@@ -78,7 +81,7 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
 
 - (void)sw_setAttributedTitleWithRequired:(BOOL)required title:(NSString *)title itemType:(SWFormItemType)itemType{
     if (required) {
-        if (SW_RequriedType == SWRequriedTypeDefault) {
+        if (SW_TitleShowType == SWTitleShowTypeDefault) {
             switch (self.itemType) {
                 case SWFormItemTypeInput:
                 case SWFormItemTypeTextViewInput:
@@ -96,10 +99,10 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
                     break;
             }
         }
-        else if (SW_RequriedType == SWRequriedTypeRedStarFront) {
+        else if (SW_TitleShowType == SWTitleShowTypeRedStarFront) {
             title = [NSString stringWithFormat:@"*%@", title];
         }
-        else if (SW_RequriedType == SWRequriedTypeRedStarBack) {
+        else if (SW_TitleShowType == SWTitleShowTypeRedStarBack) {
             title = [NSString stringWithFormat:@"%@*", title];
         }
     }
@@ -107,10 +110,10 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
     NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc]initWithString:title attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:SW_TitleFont], NSForegroundColorAttributeName:SW_TITLECOLOR}];
     
     if (required) {
-        if (SW_RequriedType == SWRequriedTypeRedStarFront) {
+        if (SW_TitleShowType == SWTitleShowTypeRedStarFront) {
             [attributedTitle addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, 1)];
         }
-        else if (SW_RequriedType == SWRequriedTypeRedStarBack) {
+        else if (SW_TitleShowType == SWTitleShowTypeRedStarBack) {
             [attributedTitle addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(title.length - 1, 1)];
         }
     }
@@ -131,6 +134,11 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
 - (void)setItemType:(SWFormItemType)itemType {
     _itemType = itemType;
     [self sw_setAttributedTitleWithRequired:self.required title:self.title itemType:itemType];
+}
+
+- (void)setShowPlaceholder:(BOOL)showPlaceholder {
+    _showPlaceholder = showPlaceholder;
+    [self sw_setPlaceholderWithShow:showPlaceholder];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder {
