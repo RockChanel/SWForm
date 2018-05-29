@@ -8,14 +8,14 @@
 
 #import "SWFormBaseCell.h"
 #import "SelwynExpandableTextView.h"
-#import "SWFormManager.h"
+#import "SWFormCompat.h"
 
 @implementation SWFormBaseCell
 
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]init];
-        _titleLabel.font = [UIFont systemFontOfSize:SWTitleFont];
+        _titleLabel.font = [UIFont systemFontOfSize:SW_TitleFont];
         _titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:_titleLabel];
     }
@@ -30,7 +30,7 @@
         _expandableTextView.textContainer.lineFragmentPadding = 0;
         _expandableTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         _expandableTextView.backgroundColor = [UIColor clearColor];
-        _expandableTextView.font = [UIFont systemFontOfSize:SWInfoFont];
+        _expandableTextView.font = [UIFont systemFontOfSize:SW_InfoFont];
         _expandableTextView.scrollEnabled = NO;
         _expandableTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         _expandableTextView.layoutManager.allowsNonContiguousLayout = NO;

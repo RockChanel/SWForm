@@ -41,19 +41,59 @@ typedef NS_ENUM(NSInteger, SWFormItemType) {
 /**
  表单条目类型
  */
-@property (nonatomic, assign) SWFormItemType type;
+@property (nonatomic, assign) SWFormItemType itemType;
 
 /**
- 表单条目标题
+ 表单条目标题，表单标题为单行显示，尽可能简短，若标题太长，会牺牲字体大小以达到显示完全的效果
  */
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *info;
-@property (nonatomic, copy) NSString *error;
-@property (nonatomic, copy) NSString *placeholder;
+@property (nonatomic, strong) NSAttributedString *attributedTitle;
 
 /**
- 创建并返回 SWFormItem 对象
+ 表单条目详情
  */
-+ (instancetype)item;
+@property (nonatomic, copy) NSString *info;
+
+/**
+ 表单条目错误信息，用于表单条件未满足时快捷错误提示
+ */
+@property (nonatomic, copy) NSString *error;
+
+/**
+ 表单条目占位字符
+ */
+@property (nonatomic, copy) NSString *placeholder;
+@property (nonatomic, strong) NSAttributedString *attributedPlaceholder;
+
+/**
+ 图片附件条目图片
+ */
+@property (nonatomic, strong) NSArray *images;
+
+/**
+ 表单条目键盘类型
+ */
+@property (nonatomic, assign) UIKeyboardType keyboardType;
+
+/**
+ 表单条目是否可编辑 YES:可编辑 NO:不可编辑
+ */
+@property (nonatomic, assign) BOOL editable;
+
+/**
+ 表单条目是否必填(必选) YES:必填(必选) NO:可填(可选)
+ */
+@property (nonatomic, assign) BOOL required;
 
 @end
+
+
+/**
+ SWFormItemMake 快捷构建新增表单条目
+ */
+FOUNDATION_EXPORT SWFormItem *SWFormItem_Add(NSString *title, NSString *info, SWFormItemType itemType, BOOL editable, BOOL required, UIKeyboardType keyboardType);
+
+/**
+ SWFormItemMake 快捷构建详情表单条目
+ */
+FOUNDATION_EXPORT SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemType itemType);

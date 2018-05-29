@@ -9,6 +9,7 @@
 #ifndef SWForm_h
 #define SWForm_h
 
-
+#import "SWFormItem.h"
+#import "SWFormSectionItem.h"
 
 #endif /* SWForm_h */

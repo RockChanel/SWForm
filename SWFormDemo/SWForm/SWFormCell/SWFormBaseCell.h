@@ -10,10 +10,21 @@
 
 @class SelwynExpandableTextView;
 
+/**
+ SWFormBaseCell 表单条目基类，所有表单条目都继承于BaseCell
+ */
 @interface SWFormBaseCell : UITableViewCell
 
 @property (nonatomic, strong) SelwynExpandableTextView *expandableTextView;
+
+/**
+ 表单标题
+ */
 @property (nonatomic, strong) UILabel *titleLabel;
+
+/**
+ 表单条目所在的tableView
+ */
 @property (nonatomic, weak) UITableView *expandableTableView;
 
 @end

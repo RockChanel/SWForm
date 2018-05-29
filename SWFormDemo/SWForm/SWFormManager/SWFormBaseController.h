@@ -13,4 +13,15 @@
  */
 @interface SWFormBaseController : UIViewController
 
+@property (nonatomic, strong) UITableView *formTableView;
+@property (nonatomic, strong) NSMutableArray *mutableItems;
+
+
+/**
+ 表单页面初始化方法
+
+ @param style 表单tableView样式
+ */
+- (instancetype)initWithStyle:(UITableViewStyle)style;
+
 @end

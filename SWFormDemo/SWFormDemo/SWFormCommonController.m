@@ -7,6 +7,7 @@
 //
 
 #import "SWFormCommonController.h"
+#import "SWForm.h"
 
 @interface SWFormCommonController ()
 
@@ -17,6 +18,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSMutableArray *items = [NSMutableArray array];
+    
+    SWFormItem *name = SWFormItem_Add(@"姓名", @"", SWFormItemTypeInput, YES, YES, UIKeyboardTypeDefault);
+    [items addObject:name];
+    
+    SWFormItem *age = SWFormItem_Add(@"年龄", @"", SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
+    [items addObject:age];
+    
+    SWFormSectionItem *sectionItem = SWSectionItem(items);
+    
+    [self.mutableItems addObject:sectionItem];
 }
 
 - (void)didReceiveMemoryWarning {
