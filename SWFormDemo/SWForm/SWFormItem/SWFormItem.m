@@ -38,7 +38,6 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
 - (instancetype)initWithTitle:(NSString *)title info:(NSString *)info itemType:(SWFormItemType)itemType editable:(BOOL)editable required:(BOOL)required keyboardType:(UIKeyboardType)keyboardType images:(NSArray *)images showPlaceholder:(BOOL)showPlaceholder{
     self = [super init];
     if (self) {
-        self.defaultHeight = SW_DefaultItemHeight;
         self.maxInputLength = SW_GlobalMaxInputLength;
         self.maxImageCount = SW_GlobalMaxImages;
         self.title = title;
@@ -49,10 +48,15 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
         self.keyboardType = keyboardType;
         self.images = images;
         self.showPlaceholder = showPlaceholder;
+        [self sw_setDefaultHeight:itemType];
         [self sw_setPlaceholderWithShow:showPlaceholder];
         [self sw_setAttributedTitleWithRequired:required title:title itemType:itemType];
     }
     return self;
+}
+
+- (void)sw_setDefaultHeight:(SWFormItemType)itemType {
+    self.defaultHeight = itemType == SWFormItemTypeTextViewInput ? SW_DefaultTextViewItemHeight:SW_DefaultItemHeight;
 }
 
 - (void)sw_setPlaceholderWithShow:(BOOL)show {
@@ -133,6 +137,7 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
 
 - (void)setItemType:(SWFormItemType)itemType {
     _itemType = itemType;
+    [self sw_setDefaultHeight:itemType];
     [self sw_setAttributedTitleWithRequired:self.required title:self.title itemType:itemType];
 }
 

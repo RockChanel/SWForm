@@ -9,6 +9,7 @@
 #import "SWFormBaseController.h"
 #import "SWForm.h"
 #import "SWFormInputCell.h"
+#import "SWFormTextViewInputCell.h"
 
 @interface SWFormBaseController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readonly) UITableViewStyle style;
@@ -69,23 +70,54 @@
     NSParameterAssert([sectionItem.items[indexPath.row] isKindOfClass:[SWFormItem class]]);
     SWFormItem *item = sectionItem.items[indexPath.row];
     
-    static NSString *input_cell_id = @"input_cell_id";
-    SWFormInputCell *cell = [tableView inputCellWithId:input_cell_id];
-    cell.item = item;
-    return cell;
+    if (item.itemType == SWFormItemTypeTextViewInput) {
+        static NSString *textViewInput_cell_id = @"textViewInput_cell_id";
+        SWFormTextViewInputCell *cell = [tableView textViewInputCellWithId:textViewInput_cell_id];
+        cell.item = item;
+        cell.textViewInputCompletion = ^(NSString *text) {
+            [self updateTextViewInputWithText:text indexPath:indexPath];
+        };
+        return cell;
+    }
+    else {
+        static NSString *input_cell_id = @"input_cell_id";
+        SWFormInputCell *cell = [tableView inputCellWithId:input_cell_id];
+        cell.item = item;
+        cell.inputCompletion = ^(NSString *text) {
+            [self updateInputWithText:text indexPath:indexPath];
+        };
+        return cell;
+    }
 }
 
 #pragma mark -- TableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    SWFormSectionItem *sectionItem = self.mutableItems[indexPath.section];
+    SWFormItem *item = sectionItem.items[indexPath.row];
+    if (item.itemType == SWFormItemTypeTextViewInput) {
+        return [SWFormTextViewInputCell heightWithItem:item];
+    }
+    else {
+        return [SWFormInputCell heightWithItem:item];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+#pragma mark -- TableViewCell 响应block处理
+- (void)updateInputWithText:(NSString *)text indexPath:(NSIndexPath *)indexPath {
+    SWFormSectionItem *sectionItem = self.mutableItems[indexPath.section];
+    SWFormItem *item = sectionItem.items[indexPath.row];
+    item.info = text;
+}
 
-
+- (void)updateTextViewInputWithText:(NSString *)text indexPath:(NSIndexPath *)indexPath {
+    SWFormSectionItem *sectionItem = self.mutableItems[indexPath.section];
+    SWFormItem *item = sectionItem.items[indexPath.row];
+    item.info = text;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

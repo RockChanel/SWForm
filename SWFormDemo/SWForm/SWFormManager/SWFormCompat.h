@@ -55,9 +55,10 @@ extern CGFloat const SW_TitleWidth;
 extern CGFloat const SW_TitleHeight;
 
 /**
- 表单条目初始高度，缺省为44.0f，为确保显示正常，设置值>= 44
+ 表单条目初始高度，缺省为44.0f，SWFormItemTypeTextViewInput 类型缺省高度为200，为确保显示正常，设置值>= 44
  */
 extern CGFloat const SW_DefaultItemHeight;
+extern CGFloat const SW_DefaultTextViewItemHeight;
 
 /**
  表单标题显示类别，缺省为 SWTitleShowTypeRedStarFront
@@ -77,10 +78,23 @@ extern NSInteger const SW_GlobalMaxInputLength;
 extern NSInteger const SW_GlobalMaxImages;
 
 /**
+ 获取文字内容的Size大小
+
+ @param str 文字内容
+ @param font 字体大小
+ @param maxSize 最大显示Size
+ */
+FOUNDATION_EXPORT CGSize SWSizeOfString(NSString *str, CGFloat font, CGSize maxSize);
+
+/**
  表单条目输入框占位符字体颜色
  */
 #define SW_PLACEHOLDERCOLOR [UIColor colorWithRed:187/255.0 green:187/255.0 blue:187/255.0 alpha:1/1.0]
 
+/**
+ SWFormItemTypeTextViewInput 类别 TextView 背景颜色
+ */
+#define SW_TEXTVIEW_BACKGROUNDCOLOR [UIColor colorWithRed:250/255.0 green:250/255.0 blue:250/255.0 alpha:1/1.0]
 /**
  表单条目标题颜色
  */
@@ -89,6 +103,4 @@ extern NSInteger const SW_GlobalMaxImages;
 /**
  获取屏幕宽度
  */
-#ifndef SW_SCRREN_WIDTH
 #define SW_SCRREN_WIDTH [UIScreen mainScreen].bounds.size.width
-#endif

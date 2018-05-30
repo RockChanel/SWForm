@@ -15,6 +15,9 @@
  */
 @property (nonatomic, strong) NSArray *items;
 
+@property (nonatomic, copy) NSString *headerTitle;
+@property (nonatomic, copy) NSString *footerTitle;
+
 @end
 
 FOUNDATION_EXPORT SWFormSectionItem *SWSectionItem(NSArray *items);

@@ -22,6 +22,7 @@
 		E85C6E9720BBECF400BFDC01 /* SWFormItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E9620BBECF400BFDC01 /* SWFormItem.m */; };
 		E85C6E9B20BBF64D00BFDC01 /* SWFormBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E9A20BBF64D00BFDC01 /* SWFormBaseCell.m */; };
 		E85C6E9E20BBF67800BFDC01 /* SelwynExpandableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E9C20BBF67800BFDC01 /* SelwynExpandableTextView.m */; };
+		E8A52A8220BE3EC6001A3031 /* SWFormTextViewInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A52A8120BE3EC6001A3031 /* SWFormTextViewInputCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		E85C6E9C20BBF67800BFDC01 /* SelwynExpandableTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelwynExpandableTextView.m; sourceTree = "<group>"; };
 		E85C6E9D20BBF67800BFDC01 /* SelwynExpandableTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelwynExpandableTextView.h; sourceTree = "<group>"; };
 		E85C6EA320BBF8CC00BFDC01 /* SWForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWForm.h; sourceTree = "<group>"; };
+		E8A52A8020BE3EC6001A3031 /* SWFormTextViewInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormTextViewInputCell.h; sourceTree = "<group>"; };
+		E8A52A8120BE3EC6001A3031 /* SWFormTextViewInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormTextViewInputCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				E85C6EA320BBF8CC00BFDC01 /* SWForm.h */,
+				E83F3F3E20BC093C00FC47ED /* SWFormBaseController.h */,
+				E83F3F3F20BC093C00FC47ED /* SWFormBaseController.m */,
 				E85C6E9F20BBF82B00BFDC01 /* SWFormManager */,
 				E85C6E9420BBECE000BFDC01 /* SWFormItem */,
 				E85C6E9820BBF5FD00BFDC01 /* SWFormCell */,
@@ -131,6 +136,8 @@
 				E85C6E9A20BBF64D00BFDC01 /* SWFormBaseCell.m */,
 				E83F3F2F20BC000C00FC47ED /* SWFormInputCell.h */,
 				E83F3F3020BC000C00FC47ED /* SWFormInputCell.m */,
+				E8A52A8020BE3EC6001A3031 /* SWFormTextViewInputCell.h */,
+				E8A52A8120BE3EC6001A3031 /* SWFormTextViewInputCell.m */,
 			);
 			path = SWFormCell;
 			sourceTree = "<group>";
@@ -140,8 +147,6 @@
 			children = (
 				E82E815520BD2F270085CBFC /* SWFormCompat.h */,
 				E82E815620BD2F270085CBFC /* SWFormCompat.m */,
-				E83F3F3E20BC093C00FC47ED /* SWFormBaseController.h */,
-				E83F3F3F20BC093C00FC47ED /* SWFormBaseController.m */,
 				E85C6E9D20BBF67800BFDC01 /* SelwynExpandableTextView.h */,
 				E85C6E9C20BBF67800BFDC01 /* SelwynExpandableTextView.m */,
 				E82E815820BD578F0085CBFC /* UITextView+TextLimit.h */,
@@ -227,6 +232,7 @@
 				E82E815120BD258F0085CBFC /* SWFormSectionItem.m in Sources */,
 				E85C6E9B20BBF64D00BFDC01 /* SWFormBaseCell.m in Sources */,
 				E82E815720BD2F270085CBFC /* SWFormCompat.m in Sources */,
+				E8A52A8220BE3EC6001A3031 /* SWFormTextViewInputCell.m in Sources */,
 				E83F3F4020BC093C00FC47ED /* SWFormBaseController.m in Sources */,
 				E83F3F4920BC0BC000FC47ED /* SWFormCommonController.m in Sources */,
 				E85C6E8220BBEC4F00BFDC01 /* ViewController.m in Sources */,

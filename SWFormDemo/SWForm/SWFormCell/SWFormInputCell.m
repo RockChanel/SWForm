@@ -20,6 +20,7 @@
 - (void)setItem:(SWFormItem *)item {
     _item = item;
     self.titleLabel.attributedText = item.attributedTitle;
+    self.expandableTextView.text = item.info;
     self.expandableTextView.attributedPlaceholder = item.attributedPlaceholder;
     self.expandableTextView.editable = item.editable;
     self.expandableTextView.keyboardType = item.keyboardType;
@@ -28,14 +29,31 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
     self.titleLabel.frame = CGRectMake(SW_EdgeMargin, SW_EdgeMargin, SW_TitleWidth, SW_TitleHeight);
-    self.expandableTextView.frame = CGRectMake(SW_TitleWidth + 2*SW_EdgeMargin, SW_EdgeMargin, SW_SCRREN_WIDTH - (SW_TitleWidth + 3*SW_EdgeMargin), SW_TitleHeight);
+    
+    CGFloat newHeight = [SWFormInputCell heightWithItem:self.item];
+    self.expandableTextView.frame = CGRectMake(SW_TitleWidth + 2*SW_EdgeMargin, SW_EdgeMargin, SW_SCRREN_WIDTH - (SW_TitleWidth + 3*SW_EdgeMargin), newHeight - 2*SW_EdgeMargin);
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
     if (self.item.maxInputLength > 0) {
+        // 限制输入字数
         [self.expandableTextView textLimitWithMaxLength:self.item.maxInputLength];
     }
+    if (self.inputCompletion) {
+        self.inputCompletion(self.expandableTextView.text);
+    }
+    // 防止输入时表单因刷新动画抖动
+    [UIView performWithoutAnimation:^{
+        [self.expandableTableView beginUpdates];
+        [self.expandableTableView endUpdates];
+    }];
+}
+
++ (CGFloat)heightWithItem:(SWFormItem *)item {
+    CGFloat infoHeight = SWSizeOfString(item.info, SW_InfoFont, CGSizeMake(SW_SCRREN_WIDTH - (SW_TitleWidth + 3*SW_EdgeMargin), MAXFLOAT)).height;
+    return MAX(item.defaultHeight, infoHeight + 2*SW_EdgeMargin);
 }
 
 - (void)awakeFromNib {

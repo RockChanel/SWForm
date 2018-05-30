@@ -21,12 +21,14 @@
     
     NSMutableArray *items = [NSMutableArray array];
     
-    SWFormItem *name = SWFormItem_Add(@"姓名", @"", SWFormItemTypeInput, YES, YES, UIKeyboardTypeDefault);
-    name.maxInputLength = 5;
+    SWFormItem *name = SWFormItem_Add(@"姓名", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeDefault);
     [items addObject:name];
     
-    SWFormItem *age = SWFormItem_Add(@"年龄", @"", SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
+    SWFormItem *age = SWFormItem_Add(@"年龄", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
     [items addObject:age];
+    
+    SWFormItem *intro = SWFormItem_Add(@"个人简介", nil, SWFormItemTypeTextViewInput, YES, NO, UIKeyboardTypeDefault);
+    [items addObject:intro];
     
     SWFormSectionItem *sectionItem = SWSectionItem(items);
     

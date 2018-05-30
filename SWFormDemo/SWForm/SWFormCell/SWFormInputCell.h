@@ -11,11 +11,28 @@
 @class SWFormItem;
 
 /**
+ 输入内容block
+
+ @param text 当前输入内容
+ */
+typedef void(^InputCompletion)(NSString *text);
+
+/**
  SWFormInputCell 表单输入条目，标题居左，详情居右，支持单行与多行输入
  */
 @interface SWFormInputCell : SWFormBaseCell
 
+/**
+ 条目配置参数
+ */
 @property (nonatomic, strong) SWFormItem *item;
+
+@property (nonatomic, copy) InputCompletion inputCompletion;
+
+/**
+ 获取条目高度
+ */
++ (CGFloat)heightWithItem:(SWFormItem *)item;
 
 @end
 
