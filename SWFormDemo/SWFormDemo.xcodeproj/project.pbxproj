@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91DC5F853007E56106C64A5D /* libPods-SWFormDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0590BAB8F0C6915A6C09E62 /* libPods-SWFormDemo.a */; };
 		E82E815120BD258F0085CBFC /* SWFormSectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E82E815020BD258F0085CBFC /* SWFormSectionItem.m */; };
 		E82E815720BD2F270085CBFC /* SWFormCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = E82E815620BD2F270085CBFC /* SWFormCompat.m */; };
 		E82E815A20BD578F0085CBFC /* UITextView+TextLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = E82E815920BD578F0085CBFC /* UITextView+TextLimit.m */; };
@@ -31,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A52CD71B7BFE1D54CA0BB35 /* Pods-SWFormDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWFormDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWFormDemo/Pods-SWFormDemo.release.xcconfig"; sourceTree = "<group>"; };
+		C0590BAB8F0C6915A6C09E62 /* libPods-SWFormDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SWFormDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF6E7EE1F7EA18252DE18A1C /* Pods-SWFormDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWFormDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWFormDemo/Pods-SWFormDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E82E814F20BD258F0085CBFC /* SWFormSectionItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormSectionItem.h; sourceTree = "<group>"; };
 		E82E815020BD258F0085CBFC /* SWFormSectionItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormSectionItem.m; sourceTree = "<group>"; };
 		E82E815520BD2F270085CBFC /* SWFormCompat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormCompat.h; sourceTree = "<group>"; };
@@ -78,18 +82,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91DC5F853007E56106C64A5D /* libPods-SWFormDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80465345C13314DD72B2D149 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0590BAB8F0C6915A6C09E62 /* libPods-SWFormDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D75FE294837B4C788933E7EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF6E7EE1F7EA18252DE18A1C /* Pods-SWFormDemo.debug.xcconfig */,
+				5A52CD71B7BFE1D54CA0BB35 /* Pods-SWFormDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E85C6E7120BBEC4F00BFDC01 = {
 			isa = PBXGroup;
 			children = (
 				E85C6E9320BBEC6000BFDC01 /* SWForm */,
 				E85C6E7C20BBEC4F00BFDC01 /* SWFormDemo */,
 				E85C6E7B20BBEC4F00BFDC01 /* Products */,
+				D75FE294837B4C788933E7EE /* Pods */,
+				80465345C13314DD72B2D149 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,6 +209,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E85C6E9020BBEC4F00BFDC01 /* Build configuration list for PBXNativeTarget "SWFormDemo" */;
 			buildPhases = (
+				394BC79F8821BDFBB5264DBC /* [CP] Check Pods Manifest.lock */,
 				E85C6E7620BBEC4F00BFDC01 /* Sources */,
 				E85C6E7720BBEC4F00BFDC01 /* Frameworks */,
 				E85C6E7820BBEC4F00BFDC01 /* Resources */,
@@ -243,6 +268,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		394BC79F8821BDFBB5264DBC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWFormDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E85C6E7620BBEC4F00BFDC01 /* Sources */ = {
@@ -403,16 +449,14 @@
 		};
 		E85C6E9120BBEC4F00BFDC01 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF6E7EE1F7EA18252DE18A1C /* Pods-SWFormDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28XRZ273MD;
 				INFOPLIST_FILE = SWFormDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.RockChanel.SWFormDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -421,16 +465,14 @@
 		};
 		E85C6E9220BBEC4F00BFDC01 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A52CD71B7BFE1D54CA0BB35 /* Pods-SWFormDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28XRZ273MD;
 				INFOPLIST_FILE = SWFormDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.RockChanel.SWFormDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -73,12 +73,14 @@ extern NSInteger const SW_GlobalMaxInputLength;
 
 /**
  表单选择图片附件数，缺省为6
- 0 表示为无限制(不建议)
  */
 extern NSInteger const SW_GlobalMaxImages;
 
-
+/**
+ 表单图片条目图片加载失败占位图
+ */
 extern NSString *const SW_PlaceholderImage;
+
 /**
  获取文字内容的Size大小
 

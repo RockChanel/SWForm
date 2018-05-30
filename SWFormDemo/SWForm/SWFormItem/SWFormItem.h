@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, SWFormItemType) {
 @property (nonatomic, assign) BOOL showPlaceholder;
 
 /**
- 图片附件条目图片
+ 图片附件条目图片数组，支持UIImage、NSURL、NSString(图片URLString)类型元素
  */
 @property (nonatomic, strong) NSArray *images;
 

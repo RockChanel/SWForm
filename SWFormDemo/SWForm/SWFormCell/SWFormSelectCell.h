@@ -10,6 +10,9 @@
 
 @class SWFormItem;
 
+/**
+ SWFormSelectCell 表单选择条目
+ */
 @interface SWFormSelectCell : SWFormBaseCell
 
 @property (nonatomic, strong) SWFormItem *item;

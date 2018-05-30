@@ -62,7 +62,7 @@ static CGFloat const SWDeleteBtnWidth = 25.0f;
         self.currentImageView.image = image;
     }
     else if ([image isKindOfClass:[NSURL class]]) {
-        
+        [SWFormHandler sw_handleImageItemWithUrl:image imageView:self.currentImageView];
     }
     else if ([image isKindOfClass:[NSString class]]) {
         [SWFormHandler sw_handleImageItemWithUrl:[NSURL URLWithString:image] imageView:self.currentImageView];

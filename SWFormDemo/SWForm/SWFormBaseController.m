@@ -87,6 +87,9 @@
         static NSString *image_cell_id = @"image_cell_id";
         SWFormImageCell *cell = [tableView imageCellWithId:image_cell_id];
         cell.item = item;
+        cell.imageCompletion = ^(NSArray *images) {
+            [self updateImageWithImages:images indexPath:indexPath];
+        };
         return cell;
     }
     else {
@@ -135,6 +138,12 @@
     SWFormSectionItem *sectionItem = self.mutableItems[indexPath.section];
     SWFormItem *item = sectionItem.items[indexPath.row];
     item.info = text;
+}
+
+- (void)updateImageWithImages:(NSArray *)images indexPath:(NSIndexPath *)indexPath {
+    SWFormSectionItem *sectionItem = self.mutableItems[indexPath.section];
+    SWFormItem *item = sectionItem.items[indexPath.row];
+    item.images = images;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,6 +10,7 @@
 #import "SWFormItem.h"
 #import "SWImageCollectionCell.h"
 #import "SWFormCompat.h"
+#import "SWFormHandler.h"
 
 static NSString *image_cell_id = @"image_cell_id";
 static CGFloat const SW_ImageWidth = 80.0f;
@@ -58,6 +59,10 @@ static NSInteger const SW_RowImageCount = 4;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SWImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:image_cell_id forIndexPath:indexPath];
     cell.image = self.mutableImages[indexPath.item];
+    cell.deleteImageCompletion = ^{
+        [self.mutableImages removeObjectAtIndex:indexPath.item];
+        [self sw_reloadData];
+    };
     return cell;
 }
 
@@ -71,12 +76,29 @@ static NSInteger const SW_RowImageCount = 4;
 }
 
 - (void)selectImageAction {
-    NSLog(@"========selectAction");
+    if (self.mutableImages.count >= self.item.maxImageCount) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"最多选择%ld张附件",(long)self.item.maxImageCount] message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    
+    [SWFormHandler sw_handleSelectImageWithCompletion:^(NSArray *selectImages) {
+        
+    }];
+}
+
+- (void)sw_reloadData {
+    if (self.imageCompletion) {
+        self.imageCompletion(self.mutableImages);
+    }
+    [UIView performWithoutAnimation:^{
+        [self.expandableTableView beginUpdates];
+        [self.expandableTableView endUpdates];
+    }];
 }
 
 + (CGFloat)heightWithItem:(SWFormItem *)item {
     NSInteger rows = item.images.count%SW_RowImageCount > 0 ? item.images.count/SW_RowImageCount+1:item.images.count/SW_RowImageCount;
-    
     return item.images.count > 0 ? item.defaultHeight + 10*(rows+1) + rows*SW_ImageWidth:item.defaultHeight;
 }
 
