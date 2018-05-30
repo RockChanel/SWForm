@@ -27,8 +27,16 @@
     SWFormItem *age = SWFormItem_Add(@"年龄", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
     [items addObject:age];
     
+    SWFormItem *gender = SWFormItem_Add(@"性别", nil, SWFormItemTypeSelect, NO, YES, UIKeyboardTypeDefault);
+    [items addObject:gender];
+    
     SWFormItem *intro = SWFormItem_Add(@"个人简介", nil, SWFormItemTypeTextViewInput, YES, NO, UIKeyboardTypeDefault);
     [items addObject:intro];
+    
+    SWFormItem *image = SWFormItem_Add(@"附件", nil, SWFormItemTypeImage, YES, NO, UIKeyboardTypeDefault);
+    [items addObject:image];
+    UIImage *tempImage = [UIImage imageNamed:@"SWForm.bundle/SWPlaceholderIcon"];
+    image.images = @[@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=708214320,2934312373&fm=200&gp=0.jpg"];
     
     SWFormSectionItem *sectionItem = SWSectionItem(items);
     

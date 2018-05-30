@@ -23,6 +23,11 @@
 		E85C6E9B20BBF64D00BFDC01 /* SWFormBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E9A20BBF64D00BFDC01 /* SWFormBaseCell.m */; };
 		E85C6E9E20BBF67800BFDC01 /* SelwynExpandableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C6E9C20BBF67800BFDC01 /* SelwynExpandableTextView.m */; };
 		E8A52A8220BE3EC6001A3031 /* SWFormTextViewInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A52A8120BE3EC6001A3031 /* SWFormTextViewInputCell.m */; };
+		E8CB995A20BE5310004EB148 /* SWFormSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CB995920BE5310004EB148 /* SWFormSelectCell.m */; };
+		E8CB995D20BE706B004EB148 /* SWFormImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CB995C20BE706B004EB148 /* SWFormImageCell.m */; };
+		E8CB996120BE72A6004EB148 /* SWForm.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E8CB996020BE72A6004EB148 /* SWForm.bundle */; };
+		E8CB996420BE7753004EB148 /* SWImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CB996320BE7753004EB148 /* SWImageCollectionCell.m */; };
+		E8CB996720BE8796004EB148 /* SWFormHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CB996620BE8796004EB148 /* SWFormHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +62,15 @@
 		E85C6EA320BBF8CC00BFDC01 /* SWForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWForm.h; sourceTree = "<group>"; };
 		E8A52A8020BE3EC6001A3031 /* SWFormTextViewInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormTextViewInputCell.h; sourceTree = "<group>"; };
 		E8A52A8120BE3EC6001A3031 /* SWFormTextViewInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormTextViewInputCell.m; sourceTree = "<group>"; };
+		E8CB995820BE5310004EB148 /* SWFormSelectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormSelectCell.h; sourceTree = "<group>"; };
+		E8CB995920BE5310004EB148 /* SWFormSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormSelectCell.m; sourceTree = "<group>"; };
+		E8CB995B20BE706B004EB148 /* SWFormImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormImageCell.h; sourceTree = "<group>"; };
+		E8CB995C20BE706B004EB148 /* SWFormImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormImageCell.m; sourceTree = "<group>"; };
+		E8CB996020BE72A6004EB148 /* SWForm.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SWForm.bundle; sourceTree = "<group>"; };
+		E8CB996220BE7753004EB148 /* SWImageCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWImageCollectionCell.h; sourceTree = "<group>"; };
+		E8CB996320BE7753004EB148 /* SWImageCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWImageCollectionCell.m; sourceTree = "<group>"; };
+		E8CB996520BE8796004EB148 /* SWFormHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormHandler.h; sourceTree = "<group>"; };
+		E8CB996620BE8796004EB148 /* SWFormHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +123,14 @@
 			isa = PBXGroup;
 			children = (
 				E85C6EA320BBF8CC00BFDC01 /* SWForm.h */,
+				E8CB996520BE8796004EB148 /* SWFormHandler.h */,
+				E8CB996620BE8796004EB148 /* SWFormHandler.m */,
 				E83F3F3E20BC093C00FC47ED /* SWFormBaseController.h */,
 				E83F3F3F20BC093C00FC47ED /* SWFormBaseController.m */,
 				E85C6E9F20BBF82B00BFDC01 /* SWFormManager */,
 				E85C6E9420BBECE000BFDC01 /* SWFormItem */,
 				E85C6E9820BBF5FD00BFDC01 /* SWFormCell */,
+				E8CB996020BE72A6004EB148 /* SWForm.bundle */,
 			);
 			path = SWForm;
 			sourceTree = "<group>";
@@ -138,6 +155,12 @@
 				E83F3F3020BC000C00FC47ED /* SWFormInputCell.m */,
 				E8A52A8020BE3EC6001A3031 /* SWFormTextViewInputCell.h */,
 				E8A52A8120BE3EC6001A3031 /* SWFormTextViewInputCell.m */,
+				E8CB995820BE5310004EB148 /* SWFormSelectCell.h */,
+				E8CB995920BE5310004EB148 /* SWFormSelectCell.m */,
+				E8CB995B20BE706B004EB148 /* SWFormImageCell.h */,
+				E8CB995C20BE706B004EB148 /* SWFormImageCell.m */,
+				E8CB996220BE7753004EB148 /* SWImageCollectionCell.h */,
+				E8CB996320BE7753004EB148 /* SWImageCollectionCell.m */,
 			);
 			path = SWFormCell;
 			sourceTree = "<group>";
@@ -215,6 +238,7 @@
 				E85C6E8A20BBEC4F00BFDC01 /* LaunchScreen.storyboard in Resources */,
 				E85C6E8720BBEC4F00BFDC01 /* Assets.xcassets in Resources */,
 				E85C6E8520BBEC4F00BFDC01 /* Main.storyboard in Resources */,
+				E8CB996120BE72A6004EB148 /* SWForm.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,12 +254,16 @@
 				E82E815A20BD578F0085CBFC /* UITextView+TextLimit.m in Sources */,
 				E83F3F3120BC000C00FC47ED /* SWFormInputCell.m in Sources */,
 				E82E815120BD258F0085CBFC /* SWFormSectionItem.m in Sources */,
+				E8CB995A20BE5310004EB148 /* SWFormSelectCell.m in Sources */,
 				E85C6E9B20BBF64D00BFDC01 /* SWFormBaseCell.m in Sources */,
 				E82E815720BD2F270085CBFC /* SWFormCompat.m in Sources */,
 				E8A52A8220BE3EC6001A3031 /* SWFormTextViewInputCell.m in Sources */,
+				E8CB995D20BE706B004EB148 /* SWFormImageCell.m in Sources */,
 				E83F3F4020BC093C00FC47ED /* SWFormBaseController.m in Sources */,
+				E8CB996420BE7753004EB148 /* SWImageCollectionCell.m in Sources */,
 				E83F3F4920BC0BC000FC47ED /* SWFormCommonController.m in Sources */,
 				E85C6E8220BBEC4F00BFDC01 /* ViewController.m in Sources */,
+				E8CB996720BE8796004EB148 /* SWFormHandler.m in Sources */,
 				E85C6E8D20BBEC4F00BFDC01 /* main.m in Sources */,
 				E85C6E7F20BBEC4F00BFDC01 /* AppDelegate.m in Sources */,
 			);

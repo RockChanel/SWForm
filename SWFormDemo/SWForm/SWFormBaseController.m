@@ -10,6 +10,8 @@
 #import "SWForm.h"
 #import "SWFormInputCell.h"
 #import "SWFormTextViewInputCell.h"
+#import "SWFormSelectCell.h"
+#import "SWFormImageCell.h"
 
 @interface SWFormBaseController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readonly) UITableViewStyle style;
@@ -35,10 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    }
     
     UITableViewController *tableViewController = [[UITableViewController alloc] initWithStyle:_style];
     [self addChildViewController:tableViewController];
@@ -79,6 +77,18 @@
         };
         return cell;
     }
+    else if (item.itemType == SWFormItemTypeSelect) {
+        static NSString *select_cell_id = @"select_cell_id";
+        SWFormSelectCell *cell = [tableView selectCellWithId:select_cell_id];
+        cell.item = item;
+        return cell;
+    }
+    else if (item.itemType == SWFormItemTypeImage) {
+        static NSString *image_cell_id = @"image_cell_id";
+        SWFormImageCell *cell = [tableView imageCellWithId:image_cell_id];
+        cell.item = item;
+        return cell;
+    }
     else {
         static NSString *input_cell_id = @"input_cell_id";
         SWFormInputCell *cell = [tableView inputCellWithId:input_cell_id];
@@ -97,12 +107,20 @@
     if (item.itemType == SWFormItemTypeTextViewInput) {
         return [SWFormTextViewInputCell heightWithItem:item];
     }
+    else if (item.itemType == SWFormItemTypeSelect) {
+        return [SWFormSelectCell heightWithItem:item];
+    }
+    else if (item.itemType == SWFormItemTypeImage) {
+        return [SWFormImageCell heightWithItem:item];
+    }
     else {
         return [SWFormInputCell heightWithItem:item];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SWFormSectionItem *sectionItem = self.mutableItems[indexPath.section];
+    SWFormItem *item = sectionItem.items[indexPath.row];
     
 }
 

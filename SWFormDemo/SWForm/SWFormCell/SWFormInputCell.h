@@ -15,7 +15,7 @@
 
  @param text 当前输入内容
  */
-typedef void(^InputCompletion)(NSString *text);
+typedef void(^SWInputCompletion)(NSString *text);
 
 /**
  SWFormInputCell 表单输入条目，标题居左，详情居右，支持单行与多行输入
@@ -27,7 +27,7 @@ typedef void(^InputCompletion)(NSString *text);
  */
 @property (nonatomic, strong) SWFormItem *item;
 
-@property (nonatomic, copy) InputCompletion inputCompletion;
+@property (nonatomic, copy) SWInputCompletion inputCompletion;
 
 /**
  获取条目高度

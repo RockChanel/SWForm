@@ -77,6 +77,8 @@ extern NSInteger const SW_GlobalMaxInputLength;
  */
 extern NSInteger const SW_GlobalMaxImages;
 
+
+extern NSString *const SW_PlaceholderImage;
 /**
  获取文字内容的Size大小
 

@@ -27,6 +27,7 @@ NSInteger const SW_GlobalMaxInputLength = 200;
 
 NSInteger const SW_GlobalMaxImages = 6;
 
+NSString *const SW_PlaceholderImage = @"";
 
 inline CGSize SWSizeOfString(NSString *str, CGFloat font, CGSize maxSize) {
     return [str boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size;
