@@ -59,6 +59,7 @@ static NSInteger const SW_RowImageCount = 4;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SWImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:image_cell_id forIndexPath:indexPath];
     cell.image = self.mutableImages[indexPath.item];
+    cell.editable = self.item.editable;
     cell.deleteImageCompletion = ^{
         [self.mutableImages removeObjectAtIndex:indexPath.item];
         [self sw_reloadData];

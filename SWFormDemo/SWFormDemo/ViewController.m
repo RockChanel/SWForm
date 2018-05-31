@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SWFormCommonController.h"
+#import "SWFormInfoController.h"
 
 static NSString *const kTitle = @"title";
 static NSString *const kId = @"id";
@@ -26,7 +27,7 @@ static NSString *const kId = @"id";
     
     self.datas = @[
                    @{kTitle:@"SWForm", kId:@"1"},
-                   @{kTitle:@"SWFormWithImage", kId:@"2"},
+                   @{kTitle:@"SWFormInfo", kId:@"2"},
                    ];
 }
 
@@ -42,6 +43,7 @@ static NSString *const kId = @"id";
     }
     
     cell.textLabel.text = self.datas[indexPath.row][kTitle];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -51,6 +53,10 @@ static NSString *const kId = @"id";
     if ([tempId isEqualToString:@"1"]) {
         SWFormCommonController *commonVC = [[SWFormCommonController alloc]initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:commonVC animated:YES];
+    }
+    else if ([tempId isEqualToString:@"2"]){
+        SWFormInfoController *infoVC = [[SWFormInfoController alloc]initWithStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:infoVC animated:YES];
     }
 }
 

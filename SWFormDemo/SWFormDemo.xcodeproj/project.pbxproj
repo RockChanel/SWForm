@@ -41,6 +41,7 @@
 		E8DCFE4920BF91150014F97E /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCFE3F20BF91150014F97E /* UIView+Layout.m */; };
 		E8DCFE4C20BF92810014F97E /* UIImageView+FormImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCFE4B20BF92810014F97E /* UIImageView+FormImage.m */; };
 		E8DCFE5220BF9EA60014F97E /* UITableViewCell+SelectImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCFE5120BF9EA60014F97E /* UITableViewCell+SelectImage.m */; };
+		E8DCFE5520BFD7310014F97E /* SWFormInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCFE5420BFD7310014F97E /* SWFormInfoController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,8 @@
 		E8DCFE4B20BF92810014F97E /* UIImageView+FormImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+FormImage.m"; sourceTree = "<group>"; };
 		E8DCFE5020BF9EA60014F97E /* UITableViewCell+SelectImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+SelectImage.h"; sourceTree = "<group>"; };
 		E8DCFE5120BF9EA60014F97E /* UITableViewCell+SelectImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+SelectImage.m"; sourceTree = "<group>"; };
+		E8DCFE5320BFD7310014F97E /* SWFormInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWFormInfoController.h; sourceTree = "<group>"; };
+		E8DCFE5420BFD7310014F97E /* SWFormInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWFormInfoController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,8 @@
 				E85C6E8120BBEC4F00BFDC01 /* ViewController.m */,
 				E83F3F4720BC0BC000FC47ED /* SWFormCommonController.h */,
 				E83F3F4820BC0BC000FC47ED /* SWFormCommonController.m */,
+				E8DCFE5320BFD7310014F97E /* SWFormInfoController.h */,
+				E8DCFE5420BFD7310014F97E /* SWFormInfoController.m */,
 				E8DCFE2B20BF910C0014F97E /* Vendors */,
 				E85C6E8320BBEC4F00BFDC01 /* Main.storyboard */,
 				E85C6E8620BBEC4F00BFDC01 /* Assets.xcassets */,
@@ -375,6 +380,7 @@
 				E82E815A20BD578F0085CBFC /* UITextView+TextLimit.m in Sources */,
 				E8DCFE4220BF91150014F97E /* TZImageManager.m in Sources */,
 				E83F3F3120BC000C00FC47ED /* SWFormInputCell.m in Sources */,
+				E8DCFE5520BFD7310014F97E /* SWFormInfoController.m in Sources */,
 				E8DCFE4C20BF92810014F97E /* UIImageView+FormImage.m in Sources */,
 				E82E815120BD258F0085CBFC /* SWFormSectionItem.m in Sources */,
 				E8CB995A20BE5310004EB148 /* SWFormSelectCell.m in Sources */,

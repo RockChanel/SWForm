@@ -49,6 +49,8 @@
     _formTableView.showsVerticalScrollIndicator = NO;
     _formTableView.showsHorizontalScrollIndicator = NO;
     _formTableView.backgroundColor = [UIColor whiteColor];
+    _formTableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, CGFLOAT_MIN)];
+    _formTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, CGFLOAT_MIN)];
     [self.view addSubview:_formTableView];
 }
 
@@ -124,7 +126,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SWFormSectionItem *sectionItem = self.mutableItems[indexPath.section];
     SWFormItem *item = sectionItem.items[indexPath.row];
-    
+    if (item.itemType == SWFormItemTypeSelect && item.itemSelectCompletion) {
+        item.itemSelectCompletion(item);
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.01;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01;
 }
 
 #pragma mark -- TableViewCell 响应block处理

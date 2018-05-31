@@ -21,5 +21,6 @@ typedef void(^SWDeleteImageCompletion)(void);
  当前图片，支持UIImage、NSURL、NSString(图片URLString)类型
  */
 @property (nonatomic, strong) id image;
+@property (nonatomic, assign) BOOL editable;
 
 @end

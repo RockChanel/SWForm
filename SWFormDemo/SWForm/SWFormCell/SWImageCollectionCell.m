@@ -56,6 +56,12 @@ static CGFloat const SWDeleteBtnWidth = 25.0f;
     }
 }
 
+- (void)setEditable:(BOOL)editable {
+    _editable = editable;
+    self.deleteBtn.hidden = !editable;
+    self.deleteIcon.hidden = !editable;
+}
+
 - (void)setImage:(id)image {
     _image = image;
     if ([image isKindOfClass:[UIImage class]]) {

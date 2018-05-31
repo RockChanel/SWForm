@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class SWFormItem;
+
 typedef NS_ENUM(NSInteger, SWFormItemType) {
     /**
      表单条目可单行或多行输入（标题居左）
@@ -27,6 +29,8 @@ typedef NS_ENUM(NSInteger, SWFormItemType) {
      */
     SWFormItemTypeImage = 3,
 };
+
+typedef void(^SWItemSelectCompletion)(SWFormItem *item);
 
 /**
  SWFormItem 主要对表单条目提供动态配置属性
@@ -76,6 +80,11 @@ typedef NS_ENUM(NSInteger, SWFormItemType) {
 @property (nonatomic, strong) NSArray *images;
 
 /**
+ images 图片数组中类型筛选出为UIImage的数组子集，以实现图片上传筛选
+ */
+@property (nonatomic, strong, readonly) NSArray *selectImages;
+
+/**
  表单条目键盘类型
  */
 @property (nonatomic, assign) UIKeyboardType keyboardType;
@@ -101,6 +110,11 @@ typedef NS_ENUM(NSInteger, SWFormItemType) {
  0 表示无限制(不建议)
  */
 @property (nonatomic, assign) NSInteger maxImageCount;
+
+/**
+ 表单条目点击选择事件block
+ */
+@property (nonatomic, copy) SWItemSelectCompletion itemSelectCompletion;
 
 @end
 

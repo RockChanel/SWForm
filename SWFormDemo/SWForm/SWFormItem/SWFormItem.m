@@ -49,22 +49,29 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
         self.images = images;
         self.showPlaceholder = showPlaceholder;
         [self sw_setDefaultHeight:itemType];
-        [self sw_setPlaceholderWithShow:showPlaceholder];
+        [self sw_setPlaceholderWithShow:showPlaceholder itemType:itemType];
         [self sw_setAttributedTitleWithRequired:required title:title itemType:itemType];
     }
     return self;
 }
 
+
+/**
+ 根据表单条目类型设置条目缺省高度
+ */
 - (void)sw_setDefaultHeight:(SWFormItemType)itemType {
     self.defaultHeight = itemType == SWFormItemTypeTextViewInput ? SW_DefaultTextViewItemHeight:SW_DefaultItemHeight;
 }
 
-- (void)sw_setPlaceholderWithShow:(BOOL)show {
+/**
+ 设置是否显示输入框占位字符
+ */
+- (void)sw_setPlaceholderWithShow:(BOOL)show itemType:(SWFormItemType)itemType {
     if (!show) {
         self.placeholder = @"";
         return;
     }
-    switch (self.itemType) {
+    switch (itemType) {
         case SWFormItemTypeInput:
         case SWFormItemTypeTextViewInput:
         {
@@ -124,7 +131,23 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
     self.attributedTitle = attributedTitle;
 }
 
+#pragma mark -- 重写get方法
+- (NSArray *)selectImages {
+    NSMutableArray *tempImages = [NSMutableArray array];
+    for (id temp in self.images) {
+        if ([temp isKindOfClass:[UIImage class]]) {
+            [tempImages addObject:temp];
+        }
+    }
+    return tempImages;
+}
+
 #pragma mark -- 重写属性set方法，防止单独改变属性无响应效果
+- (void)setImages:(NSArray *)images {
+    _images = images;
+    [self selectImages];
+}
+
 - (void)setTitle:(NSString *)title {
     _title = title;
     [self sw_setAttributedTitleWithRequired:self.required title:title itemType:self.itemType];
@@ -139,11 +162,12 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
     _itemType = itemType;
     [self sw_setDefaultHeight:itemType];
     [self sw_setAttributedTitleWithRequired:self.required title:self.title itemType:itemType];
+    [self sw_setPlaceholderWithShow:self.showPlaceholder itemType:itemType];
 }
 
 - (void)setShowPlaceholder:(BOOL)showPlaceholder {
     _showPlaceholder = showPlaceholder;
-    [self sw_setPlaceholderWithShow:showPlaceholder];
+    [self sw_setPlaceholderWithShow:showPlaceholder itemType:self.itemType];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder {
