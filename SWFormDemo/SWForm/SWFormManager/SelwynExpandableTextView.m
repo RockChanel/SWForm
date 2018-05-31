@@ -7,6 +7,7 @@
 //
 
 #import "SelwynExpandableTextView.h"
+#import "SWFormCompat.h"
 
 #define HAS_TEXT_CONTAINER [self respondsToSelector:@selector(textContainer)]
 #define HAS_TEXT_CONTAINER_INSETS(x) [(x) respondsToSelector:@selector(textContainerInset)]

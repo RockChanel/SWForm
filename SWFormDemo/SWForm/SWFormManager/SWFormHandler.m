@@ -7,24 +7,11 @@
 //
 
 #import "SWFormHandler.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import "SWFormCompat.h"
 #import <Photos/PHPhotoLibrary.h>
 #import <AVFoundation/AVCaptureDevice.h>
+#import <UIKit/UIKit.h>
 
 @implementation SWFormHandler
-
-+ (instancetype)formHandler {
-    return [[self alloc]init];
-}
-
-+ (void)sw_handleImageItemWithUrl:(NSURL *)url imageView:(UIImageView *)imageView {
-    [imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:SW_PlaceholderImage]];
-}
-
-+ (void)sw_handleSelectImageWithCompletion:(void(^)(NSArray *selectImages))completion {
-    
-}
 
 #pragma mark -- 校验相机相册权限
 /** 校验是否有相机权限 */

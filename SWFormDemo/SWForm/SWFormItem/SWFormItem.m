@@ -148,7 +148,7 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
 
 - (void)setPlaceholder:(NSString *)placeholder {
     _placeholder = placeholder;
-    NSMutableAttributedString *attributedPlaceholder = [[NSMutableAttributedString alloc]initWithString:placeholder attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:SW_TitleFont],NSForegroundColorAttributeName:SW_PLACEHOLDERCOLOR}];
+    NSMutableAttributedString *attributedPlaceholder = [[NSMutableAttributedString alloc]initWithString:placeholder attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:SW_InfoFont],NSForegroundColorAttributeName:SW_PLACEHOLDERCOLOR}];
     self.attributedPlaceholder = attributedPlaceholder;
 }
 

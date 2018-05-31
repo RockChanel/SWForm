@@ -8,7 +8,7 @@
 
 #import "SWImageCollectionCell.h"
 #import "SWFormCompat.h"
-#import "SWFormHandler.h"
+#import "UIImageView+FormImage.h"
 /**
  删除图标宽高
  */
@@ -62,10 +62,10 @@ static CGFloat const SWDeleteBtnWidth = 25.0f;
         self.currentImageView.image = image;
     }
     else if ([image isKindOfClass:[NSURL class]]) {
-        [SWFormHandler sw_handleImageItemWithUrl:image imageView:self.currentImageView];
+        [self.currentImageView sw_setImageItemWithUrl:image];
     }
     else if ([image isKindOfClass:[NSString class]]) {
-        [SWFormHandler sw_handleImageItemWithUrl:[NSURL URLWithString:image] imageView:self.currentImageView];
+        [self.currentImageView sw_setImageItemWithUrl:[NSURL URLWithString:image]];
     }
     else {
         self.currentImageView.image = [UIImage imageNamed:SW_PlaceholderImage];

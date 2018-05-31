@@ -10,7 +10,7 @@
 #import "SWFormItem.h"
 #import "SWImageCollectionCell.h"
 #import "SWFormCompat.h"
-#import "SWFormHandler.h"
+#import "UITableViewCell+SelectImage.h"
 
 static NSString *image_cell_id = @"image_cell_id";
 static CGFloat const SW_ImageWidth = 80.0f;
@@ -82,8 +82,11 @@ static NSInteger const SW_RowImageCount = 4;
         return;
     }
     
-    [SWFormHandler sw_handleSelectImageWithCompletion:^(NSArray *selectImages) {
-        
+    __weak typeof(self) weakSelf = self;
+    [self sw_selectImageWithMaxImages:self.item.maxImageCount currentImages:self.mutableImages.count completion:^(NSArray *selectImages) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.mutableImages addObjectsFromArray:selectImages];
+        [strongSelf sw_reloadData];
     }];
 }
 
