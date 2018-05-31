@@ -8,6 +8,7 @@
 
 #import "SWFormCommonController.h"
 #import "SWForm.h"
+#import "SWFormHandler.h"
 
 typedef void(^GenderSelectCompletion)(NSInteger index);
 
@@ -25,7 +26,6 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
     // Do any additional setup after loading the view.
     
     self.genders = @[@"男",@"女"];
-    
     [self datas];
 }
 
@@ -75,11 +75,19 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
     
     // 确定按钮点击事件回调
     self.submitCompletion = ^{
+        
         NSLog(@"提交按钮点击");
-        NSLog(@"selectImages === %@", image.selectImages);
-        //NSLog(@"images === %@", image.images);
-        NSLog(@"gender === %@", gender.info);
-        NSLog(@"name === %@", name.info);
+        // 这里只是简单描述校验逻辑，可根据自身需求封装数据校验逻辑
+        [SWFormHandler sw_checkFormNullDataWithWithDatas:weakSelf.mutableItems success:^{
+            
+            NSLog(@"selectImages === %@", image.selectImages);
+            //NSLog(@"images === %@", image.images);
+            NSLog(@"gender === %@", gender.info);
+            NSLog(@"name === %@", name.info);
+            
+        } failure:^(NSString *error) {
+            NSLog(@"error====%@",error);
+        }];
     };
 }
 
@@ -102,11 +110,8 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
 }
 
 - (void)selectGenderWithItem:(SWFormItem *)item{
-    
     UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:[NSString stringWithFormat:@"请选择%@",item.title] delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
-    
     for (int i = 0; i < self.genders.count; i++) {
-        
         [actionSheet addButtonWithTitle:self.genders[i]];
     }
     actionSheet.tag = 10;

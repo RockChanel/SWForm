@@ -59,11 +59,6 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
 @property (nonatomic, copy) NSString *info;
 
 /**
- 表单条目错误信息，用于表单条件未满足时快捷错误提示
- */
-@property (nonatomic, copy) NSString *error;
-
-/**
  表单条目占位字符
  */
 @property (nonatomic, copy) NSString *placeholder;

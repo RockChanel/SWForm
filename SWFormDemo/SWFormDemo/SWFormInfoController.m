@@ -59,20 +59,13 @@ typedef void(^EditCompletion)(void);
     [self.mutableItems addObject:sectionItem];
     
     __weak typeof(self) weakSelf = self;
+    
     // 编辑按钮点击事件回调
     self.editCompletion = ^{
         weakSelf.isEditing = !weakSelf.isEditing;
-        
         name.editable = weakSelf.isEditing;
         age.editable = weakSelf.isEditing;
         image.editable = weakSelf.isEditing;
-        
-        if (weakSelf.isEditing) {
-            
-        }
-        else {
-            
-        }
         [weakSelf.formTableView reloadData];
     };
 }

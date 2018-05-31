@@ -192,6 +192,8 @@
 				E8DCFE4B20BF92810014F97E /* UIImageView+FormImage.m */,
 				E8DCFE5020BF9EA60014F97E /* UITableViewCell+SelectImage.h */,
 				E8DCFE5120BF9EA60014F97E /* UITableViewCell+SelectImage.m */,
+				E8CB996520BE8796004EB148 /* SWFormHandler.h */,
+				E8CB996620BE8796004EB148 /* SWFormHandler.m */,
 				E83F3F3E20BC093C00FC47ED /* SWFormBaseController.h */,
 				E83F3F3F20BC093C00FC47ED /* SWFormBaseController.m */,
 				E85C6E9F20BBF82B00BFDC01 /* SWFormManager */,
@@ -237,8 +239,6 @@
 			children = (
 				E82E815520BD2F270085CBFC /* SWFormCompat.h */,
 				E82E815620BD2F270085CBFC /* SWFormCompat.m */,
-				E8CB996520BE8796004EB148 /* SWFormHandler.h */,
-				E8CB996620BE8796004EB148 /* SWFormHandler.m */,
 				E85C6E9D20BBF67800BFDC01 /* SelwynExpandableTextView.h */,
 				E85C6E9C20BBF67800BFDC01 /* SelwynExpandableTextView.m */,
 				E82E815820BD578F0085CBFC /* UITextView+TextLimit.h */,

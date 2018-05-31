@@ -10,8 +10,40 @@
 #import <Photos/PHPhotoLibrary.h>
 #import <AVFoundation/AVCaptureDevice.h>
 #import <UIKit/UIKit.h>
+#import "SWFormItem.h"
+#import "SWFormSectionItem.h"
 
 @implementation SWFormHandler
+
++ (void)sw_checkFormNullDataWithWithDatas:(NSArray *)datas success:(void(^)(void))success failure:(void(^)(NSString *error))failure {
+    for (int sec = 0; sec < datas.count; sec++) {
+        SWFormSectionItem *sectionItem = datas[sec];
+        for (int row = 0; row < sectionItem.items.count; row++) {
+            SWFormItem *rowItem = sectionItem.items[row];
+            if (rowItem.required) {
+                if (rowItem.itemType == SWFormItemTypeInput || rowItem.itemType == SWFormItemTypeTextViewInput) {
+                    if (!rowItem.info || [rowItem.info isEqualToString:@""]) {
+                        failure([NSString stringWithFormat:@"请输入%@", rowItem.title]);
+                        return;
+                    }
+                }
+                else if (rowItem.itemType == SWFormItemTypeSelect) {
+                    if (!rowItem.info || [rowItem.info isEqualToString:@""]) {
+                        failure([NSString stringWithFormat:@"请选择%@", rowItem.title]);
+                        return;
+                    }
+                }
+                else if (rowItem.itemType == SWFormItemTypeImage) {
+                    if (!rowItem.images || rowItem.images.count == 0) {
+                        failure([NSString stringWithFormat:@"请选择%@", rowItem.title]);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+    success();
+}
 
 #pragma mark -- 校验相机相册权限
 + (void)sw_checkCameraAuthorizationStatusWithGrand:(void(^)(BOOL granted))permissionGranted
