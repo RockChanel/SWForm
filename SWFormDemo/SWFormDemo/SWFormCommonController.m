@@ -9,7 +9,12 @@
 #import "SWFormCommonController.h"
 #import "SWForm.h"
 
-@interface SWFormCommonController ()
+typedef void(^GenderSelectCompletion)(NSInteger index);
+
+@interface SWFormCommonController ()<UIActionSheetDelegate>
+
+@property (nonatomic, copy) GenderSelectCompletion genderSelectCompletion;
+@property (nonatomic, strong) NSArray *genders;
 
 @end
 
@@ -19,17 +24,28 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.genders = @[@"男",@"女"];
+    
+    [self datas];
+}
+
+/**
+ 数据源处理
+ */
+- (void)datas {
     NSMutableArray *items = [NSMutableArray array];
     
     SWFormItem *name = SWFormItem_Add(@"姓名", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeDefault);
+    name.maxInputLength = 10;
     [items addObject:name];
     
     SWFormItem *age = SWFormItem_Add(@"年龄", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
+    age.maxInputLength = 3;
     [items addObject:age];
     
     SWFormItem *gender = SWFormItem_Add(@"性别", nil, SWFormItemTypeSelect, NO, YES, UIKeyboardTypeDefault);
     gender.itemSelectCompletion = ^(SWFormItem *item) {
-       
+        [self selectGenderWithItem:item];
     };
     [items addObject:gender];
     
@@ -41,8 +57,71 @@
     [items addObject:image];
     
     SWFormSectionItem *sectionItem = SWSectionItem(items);
-    
+    //    sectionItem.headerHeight = 10;
+    //    sectionItem.footerView = [self footerView];
+    //    sectionItem.footerHeight = 80;
     [self.mutableItems addObject:sectionItem];
+    
+    self.formTableView.tableFooterView = [self footerView];
+    
+    // 性别选择事件回调
+    __weak typeof(self) weakSelf = self;
+    self.genderSelectCompletion = ^(NSInteger index) {
+        if (index!=0) {
+            gender.info = weakSelf.genders[index-1];
+            [weakSelf.formTableView reloadData];
+        }
+    };
+    
+    // 确定按钮点击事件回调
+    self.submitCompletion = ^{
+        NSLog(@"提交按钮点击");
+        NSLog(@"selectImages === %@", image.selectImages);
+        //NSLog(@"images === %@", image.images);
+        NSLog(@"gender === %@", gender.info);
+        NSLog(@"name === %@", name.info);
+    };
+}
+
+/**
+ 创建footer
+ */
+- (UIView *)footerView {
+    UIView *footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    submitBtn.bounds = CGRectMake(0, 0, 100, 40);
+    submitBtn.center = footer.center;
+    submitBtn.backgroundColor = [UIColor orangeColor];
+    [submitBtn setTitle:@"提交" forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn addTarget:self action:@selector(submitAction) forControlEvents:UIControlEventTouchUpInside];
+    [footer addSubview:submitBtn];
+    
+    return footer;
+}
+
+- (void)selectGenderWithItem:(SWFormItem *)item{
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:[NSString stringWithFormat:@"请选择%@",item.title] delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    for (int i = 0; i < self.genders.count; i++) {
+        
+        [actionSheet addButtonWithTitle:self.genders[i]];
+    }
+    actionSheet.tag = 10;
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == 10) {
+        self.genderSelectCompletion(buttonIndex);
+    }
+}
+
+- (void)submitAction {
+    self.submitCompletion();
 }
 
 - (void)didReceiveMemoryWarning {

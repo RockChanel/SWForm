@@ -132,11 +132,25 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.01;
+    SWFormSectionItem *sectionItem = self.mutableItems[section];
+    return sectionItem.headerHeight > 0 ? sectionItem.headerHeight:0.01;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.01;
+    SWFormSectionItem *sectionItem = self.mutableItems[section];
+    return sectionItem.footerHeight > 0 ? sectionItem.footerHeight:0.01;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    SWFormSectionItem *sectionItem = self.mutableItems[section];
+    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, sectionItem.headerHeight)];
+    return sectionItem.headerView ? sectionItem.headerView:header;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    SWFormSectionItem *sectionItem = self.mutableItems[section];
+    UIView *footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, sectionItem.footerHeight)];
+    return sectionItem.footerView ? sectionItem.footerView:footer;
 }
 
 #pragma mark -- TableViewCell 响应block处理

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface SWFormSectionItem : NSObject
 
@@ -17,6 +18,12 @@
 
 @property (nonatomic, copy) NSString *headerTitle;
 @property (nonatomic, copy) NSString *footerTitle;
+
+@property (nonatomic, assign) CGFloat headerHeight;
+@property (nonatomic, assign) CGFloat footerHeight;
+
+@property (nonatomic, strong) UIView *headerView;
+@property (nonatomic, strong) UIView *footerView;
 
 @end
 

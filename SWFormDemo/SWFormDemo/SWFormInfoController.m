@@ -9,7 +9,13 @@
 #import "SWFormInfoController.h"
 #import "SWForm.h"
 
+typedef void(^EditCompletion)(void);
+
 @interface SWFormInfoController ()
+
+@property (nonatomic, strong) UIButton *editBtn;
+@property (nonatomic, copy)EditCompletion editCompletion;
+@property (nonatomic, assign) BOOL isEditing;
 
 @end
 
@@ -18,11 +24,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    [self.editBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    self.editBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [self.editBtn sizeToFit];
+    [self.editBtn addTarget:self action:@selector(editeAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *editItem = [[UIBarButtonItem alloc]initWithCustomView:self.editBtn];
+    self.navigationItem.rightBarButtonItem = editItem;
+    
+    [self datas];
+}
+
+/**
+ 数据源处理
+ */
+- (void)datas {
     NSMutableArray *items = [NSMutableArray array];
     SWFormItem *name = SWFormItem_Info(@"姓名", @"selwyn", SWFormItemTypeInput);
+    name.maxInputLength = 10;
+    name.keyboardType = UIReturnKeyDefault;
     [items addObject:name];
     
     SWFormItem *age = SWFormItem_Info(@"年龄", @"14", SWFormItemTypeInput);
+    age.maxInputLength = 3;
+    age.keyboardType = UIKeyboardTypeNumberPad;
     [items addObject:age];
     
     SWFormItem *image = SWFormItem_Info(@"图片附件", nil, SWFormItemTypeImage);
@@ -31,6 +57,33 @@
     
     SWFormSectionItem *sectionItem = SWSectionItem(items);
     [self.mutableItems addObject:sectionItem];
+    
+    __weak typeof(self) weakSelf = self;
+    // 编辑按钮点击事件回调
+    self.editCompletion = ^{
+        weakSelf.isEditing = !weakSelf.isEditing;
+        
+        name.editable = weakSelf.isEditing;
+        age.editable = weakSelf.isEditing;
+        image.editable = weakSelf.isEditing;
+        
+        if (weakSelf.isEditing) {
+            
+        }
+        else {
+            
+        }
+        [weakSelf.formTableView reloadData];
+    };
+}
+
+- (void)editeAction {
+    self.editCompletion();
+}
+
+- (void)setIsEditing:(BOOL)isEditing {
+    _isEditing = isEditing;
+    [self.editBtn setTitle:isEditing ? @"完成":@"编辑" forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -51,7 +51,7 @@ static NSString *const kId = @"id";
 {
     NSString *tempId = self.datas[indexPath.row][kId];
     if ([tempId isEqualToString:@"1"]) {
-        SWFormCommonController *commonVC = [[SWFormCommonController alloc]initWithStyle:UITableViewStylePlain];
+        SWFormCommonController *commonVC = [[SWFormCommonController alloc]initWithStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:commonVC animated:YES];
     }
     else if ([tempId isEqualToString:@"2"]){

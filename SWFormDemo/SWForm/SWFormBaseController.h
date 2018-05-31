@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^SWFormSubmitCompletion)(void);
+
 /**
  SWFormBaseController 表单基类，所有表单必须继承于BaseController，实现了表单动态配置
  */
@@ -23,6 +25,10 @@
  */
 @property (nonatomic, strong) NSMutableArray *mutableItems;
 
+/**
+ 提交操作事件block
+ */
+@property (nonatomic, copy) SWFormSubmitCompletion submitCompletion;
 
 /**
  表单页面初始化方法
