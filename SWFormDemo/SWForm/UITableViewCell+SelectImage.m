@@ -17,7 +17,7 @@ static char SW_SELECTCOMPLETION;
 
 typedef void(^SWSelectImageCompletion)(NSArray *images);
 
-@interface UITableViewCell() <UIActionSheetDelegate, TZImagePickerControllerDelegate>
+@interface UITableViewCell() <UIActionSheetDelegate, TZImagePickerControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @end
 
 @implementation UITableViewCell (SelectImage)
@@ -53,14 +53,15 @@ typedef void(^SWSelectImageCompletion)(NSArray *images);
     }
 }
 
-
 /**
  拍照
  */
 - (void)takePhoto {
     [SWFormHandler sw_checkCameraAuthorizationStatusWithGrand:^(BOOL granted) {
         if (granted) {
-            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self selectFromTakePhoto];
+            });
         }
     }];
 }
@@ -71,13 +72,29 @@ typedef void(^SWSelectImageCompletion)(NSArray *images);
 - (void)localPhoto {
     [SWFormHandler sw_checkAlbumAuthorizationStatusWithGrand:^(BOOL granted) {
         if (granted) {
-            [self selectLocalPhoto];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self selectFromLocalPhoto];
+            });
         }
     }];
 }
 
+- (void)selectFromTakePhoto {
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [[self superViewController:self] presentViewController:picker animated:YES completion:nil];
+    }else
+    {
+        NSLog(@"无法打开照相机,请检查后重试");
+    }
+}
+
 /** 选取本地图片 */
-- (void)selectLocalPhoto{
+- (void)selectFromLocalPhoto{
     TZImagePickerController  *imagePickerVC = [[TZImagePickerController alloc] initWithMaxImagesCount:([self sw_maxImagesCount] - [self sw_currentImagesCount]) delegate:self];
     imagePickerVC.allowPickingVideo = NO;
     if ([self superViewController:self]) {
@@ -85,9 +102,22 @@ typedef void(^SWSelectImageCompletion)(NSArray *images);
     }
 }
 
+#pragma mark -- UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *selectImage = [info valueForKey:UIImagePickerControllerOriginalImage];
+    SWSelectImageCompletion completion = [self sw_selectImagesCompletion];
+    if (completion) {
+        completion(@[selectImage]);
+    }
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark -- TZImagePickerControllerDelegate
-- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto
-{
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
     SWSelectImageCompletion completion = [self sw_selectImagesCompletion];
     if (completion) {
         completion(photos);
@@ -125,6 +155,7 @@ typedef void(^SWSelectImageCompletion)(NSArray *images);
     while ((responder = [responder nextResponder]))
         if ([responder isKindOfClass: [UIViewController class]])
             return (UIViewController *)responder;
+    
     return nil;
 }
 

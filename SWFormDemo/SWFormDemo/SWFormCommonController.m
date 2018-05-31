@@ -35,9 +35,6 @@
     
     SWFormItem *image = SWFormItem_Add(@"附件", nil, SWFormItemTypeImage, YES, NO, UIKeyboardTypeDefault);
     [items addObject:image];
-    UIImage *tempImage = [UIImage imageNamed:@"SWForm.bundle/SWPlaceholderIcon"];
-//    image.images = @[@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=708214320,2934312373&fm=200&gp=0.jpg"];
-    image.images = @[tempImage,@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=708214320,2934312373&fm=200&gp=0.jpg",tempImage,@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=708214320,2934312373&fm=200&gp=0.jpg",tempImage,[NSURL URLWithString:@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=708214320,2934312373&fm=200&gp=0.jpg"],tempImage,@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=708214320,2934312373&fm=200&gp=0.jpg",tempImage,@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=708214320,2934312373&fm=200&gp=0.jpg",tempImage];
     
     SWFormSectionItem *sectionItem = SWSectionItem(items);
     

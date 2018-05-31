@@ -10,7 +10,14 @@
 
 @interface SWFormHandler : NSObject
 
+/**
+ 校验是否有相机权限
+ */
 + (void)sw_checkCameraAuthorizationStatusWithGrand:(void(^)(BOOL granted))permissionGranted;
+
+/**
+ 校验是否有相册权限
+ */
 + (void)sw_checkAlbumAuthorizationStatusWithGrand:(void(^)(BOOL granted))permissionGranted;
 
 @end

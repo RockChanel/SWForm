@@ -14,7 +14,6 @@
 @implementation SWFormHandler
 
 #pragma mark -- 校验相机相册权限
-/** 校验是否有相机权限 */
 + (void)sw_checkCameraAuthorizationStatusWithGrand:(void(^)(BOOL granted))permissionGranted
 {
     AVAuthorizationStatus videoAuthStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
@@ -49,7 +48,6 @@
     }
 }
 
-/** 校验是否有相册权限 */
 + (void)sw_checkAlbumAuthorizationStatusWithGrand:(void(^)(BOOL granted))permissionGranted {
     
     PHAuthorizationStatus photoAuthStatus = [PHPhotoLibrary authorizationStatus];
