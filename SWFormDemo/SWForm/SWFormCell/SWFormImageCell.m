@@ -10,7 +10,7 @@
 #import "SWFormItem.h"
 #import "SWImageCollectionCell.h"
 #import "SWFormCompat.h"
-#import "UITableViewCell+SelectImage.h"
+#import "SWFormImageCell+ImageHandle.h"
 
 static NSString *image_cell_id = @"image_cell_id";
 static CGFloat const SW_ImageWidth = 80.0f;
@@ -66,6 +66,10 @@ static NSInteger const SW_RowImageCount = 4;
         [self sw_reloadData];
     };
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self sw_photoBrowserWithImages:self.mutableImages currentIndex:indexPath.item];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

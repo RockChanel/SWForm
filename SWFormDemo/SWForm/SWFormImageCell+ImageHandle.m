@@ -1,26 +1,29 @@
 //
-//  UITableViewCell+SelectImage.m
+//  SWFormImageCell+ImageHandle.m
 //  SWFormDemo
 //
-//  Created by zijin on 2018/5/31.
+//  Created by zijin on 2018/6/1.
 //  Copyright © 2018年 selwyn. All rights reserved.
 //
 
-#import "UITableViewCell+SelectImage.h"
+#import "SWFormImageCell+ImageHandle.h"
 #import "SWFormHandler.h"
 #import "TZImagePickerController.h"
 #import "objc/runtime.h"
+#import "MWPhotoBrowser.h"
+#import <UIKit/UIKit.h>
 
 static char SW_MAXIMAGECOUNT;
 static char SW_CURRENTIMAGECOUNT;
 static char SW_SELECTCOMPLETION;
+static char SW_BROWSERPHOTOS;
 
 typedef void(^SWSelectImageCompletion)(NSArray *images);
 
-@interface UITableViewCell() <UIActionSheetDelegate, TZImagePickerControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface UITableViewCell() <UIActionSheetDelegate, TZImagePickerControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MWPhotoBrowserDelegate>
 @end
 
-@implementation UITableViewCell (SelectImage)
+@implementation SWFormImageCell (ImageHandle)
 
 - (void)sw_selectImageWithMaxImages:(NSInteger)maxImages currentImages:(NSInteger)currentImages completion:(void(^)(NSArray *selectImages))completion {
     
@@ -34,6 +37,55 @@ typedef void(^SWSelectImageCompletion)(NSArray *images);
     [self sw_setSelectImagesCompletion:completion];
 }
 
+#pragma mark -- MWPhotoBrowserDelegate
+- (void)sw_photoBrowserWithImages:(NSArray *)images currentIndex:(NSInteger)currentIndex {
+    NSMutableArray *photos = [NSMutableArray array];
+    for (int i = 0; i < images.count; i++) {
+        id object = images[i];
+        MWPhoto *photo;
+        if ([object isKindOfClass:[UIImage class]]) {
+            photo = [MWPhoto photoWithImage:object];
+        }
+        else if ([object isKindOfClass:[NSURL class]]) {
+            photo = [MWPhoto photoWithURL:object];
+        }
+        else if ([object isKindOfClass:[NSString class]]) {
+            photo = [MWPhoto photoWithURL:[NSURL URLWithString:object]];
+        }
+        if (photo) {
+            [photos addObject:photo];
+        }
+    }
+    [self sw_setBrowserPhotos:photos];
+    
+    MWPhotoBrowser *photoBrowser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    photoBrowser.displayActionButton = YES;
+    photoBrowser.displayNavArrows = YES;
+    photoBrowser.displaySelectionButtons = NO;
+    photoBrowser.alwaysShowControls = NO;
+    photoBrowser.zoomPhotosToFill = YES;
+    photoBrowser.enableGrid = NO;
+    photoBrowser.startOnGrid = NO;
+    [photoBrowser setCurrentPhotoIndex:currentIndex];
+    
+    UINavigationController *photoNavigationController = [[UINavigationController alloc] initWithRootViewController:photoBrowser];
+    photoNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [[self superViewController:self] presentViewController:photoNavigationController animated:YES completion:nil];
+}
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return [self sw_browserPhotos].count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+    if (index < [self sw_browserPhotos].count) {
+        return [[self sw_browserPhotos] objectAtIndex:index];
+    }
+    return nil;
+}
+
+#pragma mark -- 从相册选择图片或者拍照
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (actionSheet.tag == 10) {
         switch (buttonIndex) {
@@ -131,6 +183,14 @@ typedef void(^SWSelectImageCompletion)(NSArray *images);
 
 - (SWSelectImageCompletion)sw_selectImagesCompletion {
     return objc_getAssociatedObject(self, &SW_SELECTCOMPLETION);
+}
+
+#pragma mark -- 设置当前获取的图片
+- (void)sw_setBrowserPhotos:(NSArray *)photos {
+    objc_setAssociatedObject(self, &SW_BROWSERPHOTOS, photos, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (NSArray *)sw_browserPhotos {
+    return objc_getAssociatedObject(self, &SW_BROWSERPHOTOS);
 }
 
 #pragma mark -- 设置最大图片数
