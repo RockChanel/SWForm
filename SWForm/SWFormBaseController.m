@@ -47,12 +47,23 @@
     _formTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _formTableView.dataSource = self;
     _formTableView.delegate = self;
+    _formTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     _formTableView.showsVerticalScrollIndicator = NO;
     _formTableView.showsHorizontalScrollIndicator = NO;
     _formTableView.backgroundColor = [UIColor whiteColor];
     _formTableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, CGFLOAT_MIN)];
     _formTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, CGFLOAT_MIN)];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
+    //  加上这句不会影响你 tableview 上的 action (button,cell selected...)
+    singleTap.cancelsTouchesInView = NO;
+    [_formTableView addGestureRecognizer:singleTap];
+    
     [self.view addSubview:_formTableView];
+}
+
+- (void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer {
+    [self.view endEditing:YES];
 }
 
 #pragma mark -- TableViewDataSource

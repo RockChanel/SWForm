@@ -42,12 +42,10 @@ typedef void(^EditCompletion)(void);
 - (void)datas {
     NSMutableArray *items = [NSMutableArray array];
     SWFormItem *name = SWFormItem_Info(@"姓名", @"selwyn", SWFormItemTypeInput);
-    name.maxInputLength = 10;
     name.keyboardType = UIReturnKeyDefault;
     [items addObject:name];
     
     SWFormItem *age = SWFormItem_Info(@"年龄", @"14", SWFormItemTypeInput);
-    age.maxInputLength = 3;
     age.keyboardType = UIKeyboardTypeNumberPad;
     [items addObject:age];
     

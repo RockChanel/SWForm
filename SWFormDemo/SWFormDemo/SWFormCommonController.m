@@ -36,7 +36,6 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
     NSMutableArray *items = [NSMutableArray array];
     
     SWFormItem *name = SWFormItem_Add(@"姓名", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeDefault);
-    name.maxInputLength = 10;
     [items addObject:name];
     
     SWFormItem *age = SWFormItem_Add(@"年龄", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
