@@ -42,6 +42,7 @@
     [self addChildViewController:tableViewController];
     [tableViewController.view setFrame:self.view.bounds];
     
+    // 获取tableViewController的tableView实现表单自动上移
     _formTableView = tableViewController.tableView;
     _formTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _formTableView.dataSource = self;
@@ -70,6 +71,7 @@
     NSParameterAssert([sectionItem.items[indexPath.row] isKindOfClass:[SWFormItem class]]);
     SWFormItem *item = sectionItem.items[indexPath.row];
     
+    // 表单条目类别判断
     if (item.itemType == SWFormItemTypeTextViewInput) {
         static NSString *textViewInput_cell_id = @"textViewInput_cell_id";
         SWFormTextViewInputCell *cell = [tableView textViewInputCellWithId:textViewInput_cell_id];
@@ -153,7 +155,7 @@
     return sectionItem.footerView ? sectionItem.footerView:footer;
 }
 
-#pragma mark -- TableViewCell 响应block处理
+#pragma mark -- 表单条目响应block处理
 - (void)updateInputWithText:(NSString *)text indexPath:(NSIndexPath *)indexPath {
     SWFormSectionItem *sectionItem = self.mutableItems[indexPath.section];
     SWFormItem *item = sectionItem.items[indexPath.row];

@@ -114,7 +114,7 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
 @end
 
 /**
- SWFormItemMake 快捷构建新增表单条目
+ SWFormItem_Add 快捷构建新增表单条目
 
  @param title 标题
  @param info 详情
@@ -126,6 +126,6 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
 FOUNDATION_EXPORT SWFormItem *SWFormItem_Add(NSString *title, NSString *info, SWFormItemType itemType, BOOL editable, BOOL required, UIKeyboardType keyboardType);
 
 /**
- SWFormItemMake 快捷构建详情表单条目
+ SWFormItem_Info 快捷构建详情表单条目
  */
 FOUNDATION_EXPORT SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemType itemType);

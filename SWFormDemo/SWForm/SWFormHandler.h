@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ SWFormHandler 数据校验文件，包含相机权限、相册权限以及表单空数据校验
+ */
 @interface SWFormHandler : NSObject
 
 /**

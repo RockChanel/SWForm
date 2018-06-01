@@ -62,10 +62,19 @@ typedef void(^EditCompletion)(void);
     
     // 编辑按钮点击事件回调
     self.editCompletion = ^{
+        
         weakSelf.isEditing = !weakSelf.isEditing;
         name.editable = weakSelf.isEditing;
         age.editable = weakSelf.isEditing;
         image.editable = weakSelf.isEditing;
+        
+        if (weakSelf.isEditing) {
+            NSLog(@"====编辑中====");
+        }
+        else {
+            NSLog(@"====完成编辑====");
+        }
+        
         [weakSelf.formTableView reloadData];
     };
 }

@@ -55,7 +55,6 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
     return self;
 }
 
-
 /**
  根据表单条目类型设置条目缺省高度
  */

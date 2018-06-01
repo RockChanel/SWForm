@@ -41,6 +41,7 @@ static NSInteger const SW_RowImageCount = 4;
     self.titleLabel.frame = CGRectMake(SW_EdgeMargin, SW_EdgeMargin, SW_TitleWidth, SW_TitleHeight);
     self.icon.frame = CGRectMake(self.frame.size.width - 38, SW_EdgeMargin + 2, 23, SW_TitleHeight - 4);
     self.selectBtn.frame = CGRectMake(0, 0, self.frame.size.width, self.item.defaultHeight);
+    
     if (self.mutableImages.count > 0) {
         self.imageCollection.frame = CGRectMake(0, self.item.defaultHeight, self.frame.size.width, self.frame.size.height - self.item.defaultHeight);
         self.imageCollection.hidden = NO;
@@ -71,8 +72,7 @@ static NSInteger const SW_RowImageCount = 4;
     return CGSizeMake(SW_ImageWidth, SW_ImageWidth);
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0, 10, 10, 10);
 }
 
@@ -84,6 +84,7 @@ static NSInteger const SW_RowImageCount = 4;
     }
     
     __weak typeof(self) weakSelf = self;
+    // 选择图片事件函数
     [self sw_selectImageWithMaxImages:self.item.maxImageCount currentImages:self.mutableImages.count completion:^(NSArray *selectImages) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf.mutableImages addObjectsFromArray:selectImages];
@@ -91,6 +92,7 @@ static NSInteger const SW_RowImageCount = 4;
     }];
 }
 
+#pragma mark -- 刷新当前图片数据
 - (void)sw_reloadData {
     if (self.imageCompletion) {
         self.imageCompletion(self.mutableImages);
@@ -106,6 +108,7 @@ static NSInteger const SW_RowImageCount = 4;
     return item.images.count > 0 ? item.defaultHeight + 10*(rows+1) + rows*SW_ImageWidth:item.defaultHeight;
 }
 
+#pragma mark -- 懒加载实现
 - (NSMutableArray *)mutableImages {
     if (!_mutableImages) {
         _mutableImages = [[NSMutableArray alloc]init];
@@ -115,12 +118,10 @@ static NSInteger const SW_RowImageCount = 4;
 
 - (UICollectionView *)imageCollection {
     if (!_imageCollection) {
-        
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         layout.minimumInteritemSpacing = 10;
         layout.minimumLineSpacing = 10;
-        
         _imageCollection = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
         _imageCollection.backgroundColor = [UIColor whiteColor];
         _imageCollection.delegate = self;

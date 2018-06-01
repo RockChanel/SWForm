@@ -26,7 +26,7 @@ typedef void(^SWFormSubmitCompletion)(void);
 @property (nonatomic, strong) NSMutableArray *mutableItems;
 
 /**
- 提交操作事件block
+ 提交操作事件block，包含提交操作表单页面提交按钮点击事件实现回调
  */
 @property (nonatomic, copy) SWFormSubmitCompletion submitCompletion;
 

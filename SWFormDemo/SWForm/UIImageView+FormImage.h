@@ -13,6 +13,12 @@
  */
 @interface UIImageView (FormImage)
 
+
+/**
+ 图片附件条目图片加载
+
+ @param url 图片加载的url
+ */
 - (void)sw_setImageItemWithUrl:(NSURL *)url;
 
 @end

@@ -62,6 +62,7 @@ static CGFloat const SWDeleteBtnWidth = 25.0f;
     self.deleteIcon.hidden = !editable;
 }
 
+#pragma mark -- 设置当前图片
 - (void)setImage:(id)image {
     _image = image;
     if ([image isKindOfClass:[UIImage class]]) {
