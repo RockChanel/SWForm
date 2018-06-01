@@ -1,5 +1,10 @@
 # SWForm
 
+>详细说明戳这里：[iOS 高度封装自适应表单(重构版)](https://www.jianshu.com/p/554c6c4c42d2)
+
+
+![image]https://github.com/RockChanel/SWGIF/blob/master/SWForm.gif)
+
 `SWForm` 旨在快捷构建表单系统框架，支持大部分表单系统所需条目样式，且包含了图片附件、编辑、新增、详情等功能的拓展.
 
 ### 使用方式
