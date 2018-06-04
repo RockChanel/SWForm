@@ -10,11 +10,8 @@
 
 使用 `SWForm` 框架只需将 `SWForm`文件夹导入项目中，将所有可定制化配置的接口都已经统一入口，方便使用者根据自身需求实现定制化功能.
 
-本项目中提供了所有定制化接口的示例 `SWFormDemo`，以作为参考，在下载项目之后，使用者需执行以下命令:
-```
-cd 下载路径/SWForm-master/SWFormDemo/
-pod install
-```
+本项目中提供了所有定制化接口的示例 `SWFormDemo`，以作为参考。
+
 <br/>
 
 `SWForm` 根据需求提供了三个接口文件，以方便使用者实现高度定制化，分别为 `UIImageView+FormImage`、`SWFormImageCell+ImageHandle`、`SWFormHandler`.
