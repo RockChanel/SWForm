@@ -1,6 +1,6 @@
 # SWForm
 
->详细说明戳这里：[iOS 高度封装自适应表单(重构版)](https://www.jianshu.com/p/554c6c4c42d2)
+>详细说明戳这里：[iOS 高度封装自适应表单(重构版)](https://www.jianshu.com/p/2d2f742622fa)
 
 ![image](https://github.com/RockChanel/SWGIF/blob/master/SWForm.gif)
 
