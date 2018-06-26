@@ -13,6 +13,10 @@
  */
 @interface SelwynExpandableTextView : UITextView
 
+@property (nonatomic, assign) NSUInteger currentLength;
+@property (nonatomic, assign) NSUInteger maxLength;
+@property (nonatomic, assign) BOOL showLength;
+
 @property (copy, nonatomic) IBInspectable NSString *placeholder;
 @property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
 
