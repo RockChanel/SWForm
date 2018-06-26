@@ -10,13 +10,14 @@
 #import "SWFormItem.h"
 #import "SelwynExpandableTextView.h"
 #import "SWFormCompat.h"
+#import "NSString+SWForm.h"
 
 @implementation SWFormSelectCell
 
 - (void)setItem:(SWFormItem *)item {
     _item = item;
     self.titleLabel.attributedText = item.attributedTitle;
-    self.expandableTextView.text = item.info;
+    self.expandableTextView.text = [item.info addUnit:item.unit];
     self.expandableTextView.attributedPlaceholder = item.attributedPlaceholder;
     self.expandableTextView.editable = item.editable;
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

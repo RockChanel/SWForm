@@ -9,6 +9,9 @@
 #import "SWFormItem.h"
 #import "SWFormCompat.h"
 
+static NSString *const SWUnitYuan = @"元";
+static NSString *const SWUnitYear = @"年";
+
 @interface SWFormItem()
 
 + (instancetype)sw_itemWithTitle:(NSString *)title info:(NSString *)info itemType:(SWFormItemType)itemType editable:(BOOL)editable required:(BOOL)required keyboardType:(UIKeyboardType)keyboardType;
@@ -38,6 +41,7 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
 - (instancetype)initWithTitle:(NSString *)title info:(NSString *)info itemType:(SWFormItemType)itemType editable:(BOOL)editable required:(BOOL)required keyboardType:(UIKeyboardType)keyboardType images:(NSArray *)images showPlaceholder:(BOOL)showPlaceholder{
     self = [super init];
     if (self) {
+        self.itemUnitType = SWFormItemUnitTypeNone;
         self.maxInputLength = SW_GlobalMaxInputLength;
         self.maxImageCount = SW_GlobalMaxImages;
         self.title = title;
@@ -55,16 +59,12 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
     return self;
 }
 
-/**
- 根据表单条目类型设置条目缺省高度
- */
+#pragma mark -- 根据表单条目类型设置条目缺省高度
 - (void)sw_setDefaultHeight:(SWFormItemType)itemType {
     self.defaultHeight = itemType == SWFormItemTypeTextViewInput ? SW_DefaultTextViewItemHeight:SW_DefaultItemHeight;
 }
 
-/**
- 设置是否显示输入框占位字符
- */
+#pragma mark -- 设置是否显示输入框占位字符
 - (void)sw_setPlaceholderWithShow:(BOOL)show itemType:(SWFormItemType)itemType {
     if (!show) {
         self.placeholder = @"";
@@ -82,13 +82,13 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
             self.placeholder = @"请选择";
         }
             break;
-            
         default:
             self.placeholder = @"";
             break;
     }
 }
 
+#pragma mark -- 设置标题显示
 - (void)sw_setAttributedTitleWithRequired:(BOOL)required title:(NSString *)title itemType:(SWFormItemType)itemType{
     if (required) {
         if (SW_TitleShowType == SWTitleShowTypeDefault) {
@@ -142,6 +142,49 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
 }
 
 #pragma mark -- 重写属性set方法，防止单独改变属性无响应效果
+/**
+ 设置表单条目附带单位
+ */
+- (void)setItemUnitType:(SWFormItemUnitType)itemUnitType {
+    NSString *tempUnit = self.unit ?: @"";
+    switch (itemUnitType) {
+        case SWFormItemUnitTypeNone:
+        {
+            tempUnit = @"";
+        }
+            break;
+        case SWFormItemUnitTypeYuan:
+        {
+            tempUnit = SWUnitYuan;
+        }
+            break;
+        case SWFormItemUnitTypeYear:
+        {
+            tempUnit = SWUnitYear;
+        }
+            break;
+        default:
+            break;
+    }
+    _unit = tempUnit;
+}
+
+/**
+ 根据单位设置单元格单位类别，防止单位与单元格式不一致
+ */
+- (void)setUnit:(NSString *)unit {
+    _unit = unit;
+    if (unit == SWUnitYuan) {
+        _itemUnitType = SWFormItemUnitTypeYuan;
+    }
+    else if (unit == SWUnitYear) {
+        _itemUnitType = SWFormItemUnitTypeYear;
+    }
+    else {
+        _itemUnitType = SWFormItemUnitTypeCustom;
+    }
+}
+
 - (void)setImages:(NSArray *)images {
     _images = images;
     [self selectImages];

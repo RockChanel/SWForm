@@ -40,7 +40,13 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
     
     SWFormItem *age = SWFormItem_Add(@"年龄", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
     age.maxInputLength = 3;
+    age.unit = @"岁";
     [items addObject:age];
+    
+    SWFormItem *price = SWFormItem_Add(@"价格", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
+    price.maxInputLength = 5;
+    price.itemUnitType = SWFormItemUnitTypeYuan;
+    [items addObject:price];
     
     SWFormItem *gender = SWFormItem_Add(@"性别", nil, SWFormItemTypeSelect, NO, YES, UIKeyboardTypeDefault);
     gender.itemSelectCompletion = ^(SWFormItem *item) {

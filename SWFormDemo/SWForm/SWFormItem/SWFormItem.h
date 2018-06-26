@@ -30,6 +30,25 @@ typedef NS_ENUM(NSInteger, SWFormItemType) {
     SWFormItemTypeImage = 3,
 };
 
+typedef NS_ENUM(NSInteger, SWFormItemUnitType) {
+    /**
+     无单位
+     */
+    SWFormItemUnitTypeNone = 0,
+    /**
+     元
+     */
+    SWFormItemUnitTypeYuan,
+    /**
+     年
+     */
+    SWFormItemUnitTypeYear,
+    /**
+     以用户自定义单位
+     */
+    SWFormItemUnitTypeCustom,
+};
+
 typedef void(^SWItemSelectCompletion)(SWFormItem *item);
 
 /**
@@ -102,7 +121,6 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
 
 /**
  SWFormItemTypeImage 类别中表示最大选择图片数
- 0 表示无限制(不建议)
  */
 @property (nonatomic, assign) NSInteger maxImageCount;
 
@@ -110,6 +128,16 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
  表单条目点击选择事件block
  */
 @property (nonatomic, copy) SWItemSelectCompletion itemSelectCompletion;
+
+/**
+ 条目附带单位
+ */
+@property (nonatomic, copy) NSString *unit;
+
+/**
+ 表单条目单位类别
+ */
+@property (nonatomic, assign) SWFormItemUnitType itemUnitType;
 
 @end
 

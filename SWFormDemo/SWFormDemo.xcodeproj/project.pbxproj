@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		91DC5F853007E56106C64A5D /* libPods-SWFormDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0590BAB8F0C6915A6C09E62 /* libPods-SWFormDemo.a */; };
+		E806F3F120E1DDCB00BB6B8D /* NSString+SWForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E806F3F020E1DDCB00BB6B8D /* NSString+SWForm.m */; };
 		E826E85F20C0E6B500DDC9EE /* Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = E826E85920C0E6B500DDC9EE /* Factory.m */; };
 		E826E86020C0E6B500DDC9EE /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = E826E85C20C0E6B500DDC9EE /* MBProgressHUD+Add.m */; };
 		E826E86120C0E6B500DDC9EE /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E826E85E20C0E6B500DDC9EE /* MBProgressHUD.m */; };
@@ -90,6 +91,8 @@
 		5A52CD71B7BFE1D54CA0BB35 /* Pods-SWFormDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWFormDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWFormDemo/Pods-SWFormDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C0590BAB8F0C6915A6C09E62 /* libPods-SWFormDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SWFormDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6E7EE1F7EA18252DE18A1C /* Pods-SWFormDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWFormDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWFormDemo/Pods-SWFormDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E806F3EF20E1DDCB00BB6B8D /* NSString+SWForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+SWForm.h"; sourceTree = "<group>"; };
+		E806F3F020E1DDCB00BB6B8D /* NSString+SWForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+SWForm.m"; sourceTree = "<group>"; };
 		E826E85820C0E6B500DDC9EE /* Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Factory.h; sourceTree = "<group>"; };
 		E826E85920C0E6B500DDC9EE /* Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Factory.m; sourceTree = "<group>"; };
 		E826E85A20C0E6B500DDC9EE /* MacroDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDef.h; sourceTree = "<group>"; };
@@ -521,6 +524,8 @@
 				E85C6E9C20BBF67800BFDC01 /* SelwynExpandableTextView.m */,
 				E82E815820BD578F0085CBFC /* UITextView+TextLimit.h */,
 				E82E815920BD578F0085CBFC /* UITextView+TextLimit.m */,
+				E806F3EF20E1DDCB00BB6B8D /* NSString+SWForm.h */,
+				E806F3F020E1DDCB00BB6B8D /* NSString+SWForm.m */,
 			);
 			path = SWFormManager;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				E826E8DA20C0E85100DDC9EE /* PSTCollectionViewFlowLayout.m in Sources */,
 				E826E8BC20C0E85100DDC9EE /* MWCaptionView.m in Sources */,
 				E8DCFE5520BFD7310014F97E /* SWFormInfoController.m in Sources */,
+				E806F3F120E1DDCB00BB6B8D /* NSString+SWForm.m in Sources */,
 				E8DCFE4C20BF92810014F97E /* UIImageView+FormImage.m in Sources */,
 				E82E815120BD258F0085CBFC /* SWFormSectionItem.m in Sources */,
 				E8CB995A20BE5310004EB148 /* SWFormSelectCell.m in Sources */,
