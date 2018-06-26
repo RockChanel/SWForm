@@ -36,6 +36,7 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
     NSMutableArray *items = [NSMutableArray array];
     
     SWFormItem *name = SWFormItem_Add(@"姓名", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeDefault);
+    name.showLength = YES;
     [items addObject:name];
     
     SWFormItem *age = SWFormItem_Add(@"年龄", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
@@ -54,7 +55,8 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
     };
     [items addObject:gender];
     
-    SWFormItem *intro = SWFormItem_Add(@"个人简介", nil, SWFormItemTypeTextViewInput, YES, NO, UIKeyboardTypeDefault);
+    SWFormItem *intro = SWFormItem_Add(@"个人简介", @"这是个人简介", SWFormItemTypeTextViewInput, YES, NO, UIKeyboardTypeDefault);
+    intro.showLength = YES;
     [items addObject:intro];
     
     SWFormItem *image = SWFormItem_Add(@"附件", nil, SWFormItemTypeImage, YES, NO, UIKeyboardTypeDefault);

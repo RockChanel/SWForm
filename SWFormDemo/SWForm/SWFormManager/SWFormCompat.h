@@ -69,17 +69,22 @@ extern NSInteger const SW_TitleShowType;
  表单输入字数限制，缺省为200
  0 表示无限制
  */
-extern NSInteger const SW_GlobalMaxInputLength;
+extern NSUInteger const SW_GlobalMaxInputLength;
 
 /**
  表单选择图片附件数，缺省为6
  */
-extern NSInteger const SW_GlobalMaxImages;
+extern NSUInteger const SW_GlobalMaxImages;
 
 /**
  表单图片条目图片加载失败占位图
  */
 extern NSString *const SW_PlaceholderImage;
+
+/**
+ 表单TextView字数提示文字大小
+ */
+extern CGFloat const SW_LengHintFont;
 
 /**
  获取文字内容的Size大小

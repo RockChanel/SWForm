@@ -14,6 +14,7 @@
 
 @interface SelwynExpandableTextView()
 @property (strong, nonatomic) UITextView *_placeholderTextView;
+@property (nonatomic, strong) UILabel *lenthLab;
 @end
 
 static NSString * const kAttributedPlaceholderKey = @"attributedPlaceholder";
@@ -154,6 +155,12 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     [super layoutSubviews];
     self._placeholderTextView.textAlignment = self.textAlignment;
     [self resizePlaceholderFrame];
+    [self resizeLengthFrame];
+}
+
+- (void)setCurrentLength:(NSUInteger)currentLength {
+    _currentLength = currentLength;
+    [self resizeLengthFrame];
 }
 
 - (void)resizePlaceholderFrame
@@ -161,6 +168,17 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     CGRect frame = self._placeholderTextView.frame;
     frame.size = self.bounds.size;
     self._placeholderTextView.frame = frame;
+}
+
+- (void)resizeLengthFrame {
+    if (self.showLength) {
+        NSString *length = [NSString stringWithFormat:@"%lu", self.text.length];
+        if (self.maxLength > 0) {
+            length = [NSString stringWithFormat:@"%lu/%lu", (unsigned long)self.text.length, (unsigned long)self.maxLength];
+        }
+        self.lenthLab.text = length;
+        self.lenthLab.frame = CGRectMake(self.frame.size.width - 210, self.frame.size.height - 10 - 14, 200, 14);
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
@@ -255,6 +273,18 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
             [self._placeholderTextView removeFromSuperview];
         }
     }
+}
+
+- (UILabel *)lenthLab {
+    if (!_lenthLab) {
+        _lenthLab = [[UILabel alloc]init];
+        _lenthLab.font = [UIFont systemFontOfSize:SW_LengHintFont];
+        _lenthLab.backgroundColor = [UIColor clearColor];
+        _lenthLab.textAlignment = NSTextAlignmentRight;
+        _lenthLab.textColor = SW_PLACEHOLDERCOLOR;
+        [self addSubview:_lenthLab];
+    }
+    return _lenthLab;
 }
 
 - (void)dealloc

@@ -25,6 +25,8 @@
     self.expandableTextView.attributedPlaceholder = item.attributedPlaceholder;
     self.expandableTextView.editable = item.editable;
     self.expandableTextView.keyboardType = item.keyboardType;
+    self.expandableTextView.showLength = item.showLength;
+    self.expandableTextView.maxLength = item.maxInputLength;
     self.accessoryType = UITableViewCellAccessoryNone;
 }
 
@@ -49,6 +51,7 @@
     if (self.item.maxInputLength > 0) {
         [self.expandableTextView textLimitWithMaxLength:self.item.maxInputLength];
     }
+    self.expandableTextView.currentLength = self.expandableTextView.text.length;
     if (self.textViewInputCompletion) {
         self.textViewInputCompletion(self.expandableTextView.text);
     }

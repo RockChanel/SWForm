@@ -117,12 +117,12 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
  SWFormItemTypeInput 以及 SWFormItemTypeTextViewInput 类别中表示最大输入字数
  0 表示无限制
  */
-@property (nonatomic, assign) NSInteger maxInputLength;
+@property (nonatomic, assign) NSUInteger maxInputLength;
 
 /**
  SWFormItemTypeImage 类别中表示最大选择图片数
  */
-@property (nonatomic, assign) NSInteger maxImageCount;
+@property (nonatomic, assign) NSUInteger maxImageCount;
 
 /**
  表单条目点击选择事件block
@@ -138,6 +138,12 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
  表单条目单位类别
  */
 @property (nonatomic, assign) SWFormItemUnitType itemUnitType;
+
+/**
+ 是否显示当前字数
+ 只在 SWFormItemTypeTextViewInput 类型下有效，若无最大字数限制，则只显示字数； 若有字数限制，则显示 "当前字数/最大字数"
+ */
+@property (nonatomic, assign) BOOL showLength;
 
 @end
 
