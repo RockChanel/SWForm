@@ -47,7 +47,7 @@
     _formTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _formTableView.dataSource = self;
     _formTableView.delegate = self;
-    _formTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    //_formTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     _formTableView.showsVerticalScrollIndicator = NO;
     _formTableView.showsHorizontalScrollIndicator = NO;
     _formTableView.backgroundColor = [UIColor whiteColor];
