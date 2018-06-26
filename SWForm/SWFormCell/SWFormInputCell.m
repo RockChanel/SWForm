@@ -11,6 +11,7 @@
 #import "SWFormCompat.h"
 #import "SelwynExpandableTextView.h"
 #import "UITextView+TextLimit.h"
+#import "NSString+SWForm.h"
 
 @interface SWFormInputCell()<UITextViewDelegate>
 @end
@@ -20,7 +21,7 @@
 - (void)setItem:(SWFormItem *)item {
     _item = item;
     self.titleLabel.attributedText = item.attributedTitle;
-    self.expandableTextView.text = item.info;
+    self.expandableTextView.text = [item.info addUnit:item.unit];
     self.expandableTextView.attributedPlaceholder = item.attributedPlaceholder;
     self.expandableTextView.editable = item.editable;
     self.expandableTextView.keyboardType = item.keyboardType;
@@ -36,6 +37,10 @@
     self.expandableTextView.frame = CGRectMake(SW_TitleWidth + 2*SW_EdgeMargin, SW_EdgeMargin, SW_SCRREN_WIDTH - (SW_TitleWidth + 3*SW_EdgeMargin), newHeight - 2*SW_EdgeMargin);
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    self.expandableTextView.text = self.item.info;
+}
+
 - (void)textViewDidChange:(UITextView *)textView {
     if (self.item.maxInputLength > 0) {
         // 限制输入字数
@@ -49,6 +54,10 @@
         [self.expandableTableView beginUpdates];
         [self.expandableTableView endUpdates];
     }];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    self.expandableTextView.text = [self.item.info addUnit:self.item.unit];
 }
 
 + (CGFloat)heightWithItem:(SWFormItem *)item {
