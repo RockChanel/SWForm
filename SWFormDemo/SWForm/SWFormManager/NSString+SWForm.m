@@ -11,7 +11,7 @@
 @implementation NSString (SWForm)
 
 - (NSString *)addUnit:(NSString *)unit {
-    if ([self isEqualToString:@""]) {
+    if ([self isEqualToString:@""] || [unit isEqualToString:@""]) {
         return self;
     }
     return [NSString stringWithFormat:@"%@ %@", self, unit];

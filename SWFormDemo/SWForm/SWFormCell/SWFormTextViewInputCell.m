@@ -25,6 +25,7 @@
     self.expandableTextView.attributedPlaceholder = item.attributedPlaceholder;
     self.expandableTextView.editable = item.editable;
     self.expandableTextView.keyboardType = item.keyboardType;
+    self.expandableTextView.currentLength = item.info.length;
     self.expandableTextView.showLength = item.showLength;
     self.expandableTextView.maxLength = item.maxInputLength;
     self.accessoryType = UITableViewCellAccessoryNone;
@@ -45,6 +46,7 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     self.expandableTextView.text = self.item.info;
+    self.expandableTextView.currentLength = self.expandableTextView.text.length;
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
@@ -62,6 +64,8 @@
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
+    
+    self.expandableTextView.currentLength = self.expandableTextView.text.length;
     self.expandableTextView.text = [self.item.info addUnit:self.item.unit];
 }
 

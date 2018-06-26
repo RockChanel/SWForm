@@ -172,9 +172,9 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
 
 - (void)resizeLengthFrame {
     if (self.showLength) {
-        NSString *length = [NSString stringWithFormat:@"%lu", self.text.length];
+        NSString *length = [NSString stringWithFormat:@"%lu", self.currentLength];
         if (self.maxLength > 0) {
-            length = [NSString stringWithFormat:@"%lu/%lu", (unsigned long)self.text.length, (unsigned long)self.maxLength];
+            length = [NSString stringWithFormat:@"%lu/%lu", (unsigned long)self.currentLength, (unsigned long)self.maxLength];
         }
         self.lenthLab.text = length;
         self.lenthLab.frame = CGRectMake(self.frame.size.width - 210, self.frame.size.height - 10 - 14, 200, 14);

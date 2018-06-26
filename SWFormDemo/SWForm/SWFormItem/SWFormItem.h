@@ -31,22 +31,11 @@ typedef NS_ENUM(NSInteger, SWFormItemType) {
 };
 
 typedef NS_ENUM(NSInteger, SWFormItemUnitType) {
-    /**
-     无单位
-     */
-    SWFormItemUnitTypeNone = 0,
-    /**
-     元
-     */
-    SWFormItemUnitTypeYuan,
-    /**
-     年
-     */
-    SWFormItemUnitTypeYear,
-    /**
-     以用户自定义单位
-     */
-    SWFormItemUnitTypeCustom,
+    SWFormItemUnitTypeNone = 0, // 无单位
+    SWFormItemUnitTypeYuan, // 元
+    SWFormItemUnitTypeYear, // 年
+    SWFormItemUnitTypeMillion, // 万元
+    SWFormItemUnitTypeCustom, // 自定义单位
 };
 
 typedef void(^SWItemSelectCompletion)(SWFormItem *item);

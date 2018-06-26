@@ -11,6 +11,7 @@
 
 static NSString *const SWUnitYuan = @"元";
 static NSString *const SWUnitYear = @"年";
+static NSString *const SWUnitMillion = @"万元";
 
 @interface SWFormItem()
 
@@ -163,6 +164,10 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
             tempUnit = SWUnitYear;
         }
             break;
+        case SWFormItemUnitTypeMillion:
+        {
+            tempUnit = SWUnitMillion;
+        }
         default:
             break;
     }
@@ -174,11 +179,17 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
  */
 - (void)setUnit:(NSString *)unit {
     _unit = unit;
-    if (unit == SWUnitYuan) {
+    if ([unit isEqualToString:@""]) {
+        _itemUnitType = SWFormItemUnitTypeNone;
+    }
+    else if (unit == SWUnitYuan) {
         _itemUnitType = SWFormItemUnitTypeYuan;
     }
     else if (unit == SWUnitYear) {
         _itemUnitType = SWFormItemUnitTypeYear;
+    }
+    else if (unit == SWUnitMillion) {
+        _itemUnitType = SWFormItemUnitTypeMillion;
     }
     else {
         _itemUnitType = SWFormItemUnitTypeCustom;
