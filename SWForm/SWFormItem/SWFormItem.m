@@ -21,11 +21,11 @@ static NSString *const SWUnitMillion = @"万元";
 
 @end
 
-inline SWFormItem *SWFormItem_Add(NSString *title, NSString *info, SWFormItemType itemType, BOOL editable, BOOL required, UIKeyboardType keyboardType) {
+inline SWFormItem *SWFormItem_Add(NSString * _Nonnull title, NSString * _Nullable info, SWFormItemType itemType, BOOL editable, BOOL required, UIKeyboardType keyboardType) {
     return [SWFormItem sw_itemWithTitle:title info:info itemType:itemType editable:editable required:required keyboardType:keyboardType];
 }
 
-inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemType itemType) {
+inline SWFormItem *SWFormItem_Info(NSString * _Nonnull title, NSString * _Nullable info, SWFormItemType itemType) {
     return [SWFormItem sw_itemWithTitle:title info:info itemType:itemType];
 }
 
@@ -128,7 +128,7 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
             [attributedTitle addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(title.length - 1, 1)];
         }
     }
-    self.attributedTitle = attributedTitle;
+    _attributedTitle = attributedTitle;
 }
 
 #pragma mark -- 重写get方法
@@ -225,8 +225,12 @@ inline SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemTy
 
 - (void)setPlaceholder:(NSString *)placeholder {
     _placeholder = placeholder;
-    NSMutableAttributedString *attributedPlaceholder = [[NSMutableAttributedString alloc]initWithString:placeholder attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:SW_InfoFont],NSForegroundColorAttributeName:SW_PLACEHOLDERCOLOR}];
-    self.attributedPlaceholder = attributedPlaceholder;
+    NSAttributedString *attributedPlaceholder = [[NSAttributedString alloc]initWithString:placeholder ?: @"" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:SW_InfoFont],NSForegroundColorAttributeName:SW_PLACEHOLDERCOLOR}];
+    _attributedPlaceholder = attributedPlaceholder;
+}
+
+- (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder {
+    _attributedPlaceholder = attributedPlaceholder ?: [[NSAttributedString alloc]initWithString:@""];
 }
 
 @end

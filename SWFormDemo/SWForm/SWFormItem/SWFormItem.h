@@ -58,29 +58,29 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
 /**
  表单条目标题，表单标题为单行显示，尽可能简短，若标题太长，会牺牲字体大小以达到显示完全的效果
  */
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, strong) NSAttributedString *attributedTitle;
+@property (nonatomic, copy, nonnull) NSString *title;
+@property (nonatomic, strong, nonnull) NSAttributedString *attributedTitle;
 
 /**
  表单条目详情
  */
-@property (nonatomic, copy) NSString *info;
+@property (nonatomic, copy, nullable) NSString *info;
 
 /**
  表单条目占位字符
  */
-@property (nonatomic, copy) NSString *placeholder;
-@property (nonatomic, strong) NSAttributedString *attributedPlaceholder;
+@property (nonatomic, copy, nullable) NSString *placeholder;
+@property (nonatomic, strong, nullable) NSAttributedString *attributedPlaceholder;
 
 /**
- 是否显示表单条目占位字符 YES:显示 NO:不显示
+ 是否显示表单条目占位字符 YES:显示 NO:不显示 --- 新增 default is YES；详情 default is NO
  */
 @property (nonatomic, assign) BOOL showPlaceholder;
 
 /**
  图片附件条目图片数组，支持UIImage、NSURL、NSString(图片URLString)类型元素
  */
-@property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong, nullable) NSArray *images;
 
 /**
  images 图片数组中类型筛选出为UIImage的数组子集，以实现图片上传筛选
@@ -116,12 +116,12 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
 /**
  表单条目点击选择事件block
  */
-@property (nonatomic, copy) SWItemSelectCompletion itemSelectCompletion;
+@property (nonatomic, copy, nullable) SWItemSelectCompletion itemSelectCompletion;
 
 /**
  条目附带单位
  */
-@property (nonatomic, copy) NSString *unit;
+@property (nonatomic, copy, nullable) NSString *unit;
 
 /**
  表单条目单位类别
@@ -146,9 +146,9 @@ typedef void(^SWItemSelectCompletion)(SWFormItem *item);
  @param required 是否必填
  @param keyboardType 键盘类别
  */
-FOUNDATION_EXPORT SWFormItem *SWFormItem_Add(NSString *title, NSString *info, SWFormItemType itemType, BOOL editable, BOOL required, UIKeyboardType keyboardType);
+FOUNDATION_EXPORT SWFormItem *SWFormItem_Add(NSString * _Nonnull title, NSString * _Nullable info, SWFormItemType itemType, BOOL editable, BOOL required, UIKeyboardType keyboardType);
 
 /**
  SWFormItem_Info 快捷构建详情表单条目
  */
-FOUNDATION_EXPORT SWFormItem *SWFormItem_Info(NSString *title, NSString *info, SWFormItemType itemType);
+FOUNDATION_EXPORT SWFormItem *SWFormItem_Info(NSString * _Nonnull title, NSString * _Nullable info, SWFormItemType itemType);

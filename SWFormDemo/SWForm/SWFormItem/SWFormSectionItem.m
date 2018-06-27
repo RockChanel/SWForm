@@ -14,7 +14,7 @@
 
 @end
 
-inline SWFormSectionItem *SWSectionItem(NSArray *items) {
+inline SWFormSectionItem *SWSectionItem(NSArray * _Nonnull items) {
     return [SWFormSectionItem sw_sectionItem:items];
 }
 

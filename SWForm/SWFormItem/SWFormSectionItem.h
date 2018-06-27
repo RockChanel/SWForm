@@ -17,7 +17,7 @@
 /**
  表单section包含的条目集合
  */
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong, nonnull) NSArray *items;
 
 /**
  表单section头部高度
@@ -32,12 +32,12 @@
 /**
  表单section头部视图
  */
-@property (nonatomic, strong) UIView *headerView;
+@property (nonatomic, strong, nullable) UIView *headerView;
 
 /**
  表单section尾部视图
  */
-@property (nonatomic, strong) UIView *footerView;
+@property (nonatomic, strong, nullable) UIView *footerView;
 
 @end
 
@@ -46,4 +46,4 @@
 
  @param items 表单section包含的条目集合
  */
-FOUNDATION_EXPORT SWFormSectionItem *SWSectionItem(NSArray *items);
+FOUNDATION_EXPORT SWFormSectionItem *SWSectionItem(NSArray * _Nonnull items);
