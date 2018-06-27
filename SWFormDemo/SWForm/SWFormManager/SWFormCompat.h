@@ -27,6 +27,10 @@ typedef NS_ENUM(NSInteger, SWTitleShowType) {
      标题后部加红色*，如: 标题*
      */
     SWTitleShowTypeRedStarBack,
+    /**
+     仅显示标题
+     */
+    SWTitleShowTypeOnlyTitle,
 };
 
 /**
