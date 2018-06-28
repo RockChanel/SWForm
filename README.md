@@ -13,6 +13,7 @@
 若下载项目之后，运行报错 `incompatible project version`，是由于此项目创建 Xcode 版本为 `9.4.1`。若运行 Xcode 版本低于此版本，解决方法如下：
 
 方法一：更新 Xcode 版本
+
 方法二：右键 `SWFormExample.xcodeproj`， 点击显示包内容，打开 `project.pbxproj` 文件，修改降低 `objectVersion` 即可运行
 
 ### 使用方式
