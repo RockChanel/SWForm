@@ -8,6 +8,13 @@
 
 `SWForm` 旨在快捷构建表单系统框架，支持大部分表单系统所需条目样式，且包含了图片附件、编辑、新增、详情等功能的拓展.
 
+### Warning
+
+若下载项目之后，运行报错 `incompatible project version`，是由于此项目创建 Xcode 版本为 `9.4.1`。若运行 Xcode 版本低于此版本，解决方法如下：
+
+方法一：更新 Xcode 版本
+方法二：右键 `SWFormExample.xcodeproj`， 点击显示包内容，打开 `project.pbxproj` 文件，修改降低 `objectVersion` 即可运行
+
 ### 使用方式
 
 使用 `SWForm` 框架只需将 `SWForm`文件夹导入项目中，将所有可定制化配置的接口都已经统一入口，方便使用者根据自身需求实现定制化功能.
