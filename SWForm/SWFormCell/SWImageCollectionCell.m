@@ -39,7 +39,7 @@ static CGFloat const SWDeleteBtnWidth = 25.0f;
         [self.contentView addSubview:self.currentImageView];
         
         self.deleteIcon = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width - SWDeleteIconWidth, 0, SWDeleteIconWidth, SWDeleteIconWidth)];
-        self.deleteIcon.image = [UIImage imageNamed:@"SWForm.bundle/SWDeleteIcon"];
+        self.deleteIcon.image = [UIImage imageNamed:SW_DeleteIcon];
         [self.contentView addSubview:self.deleteIcon];
         
         self.deleteBtn = [UIButton buttonWithType:UIButtonTypeSystem];

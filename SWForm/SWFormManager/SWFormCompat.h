@@ -86,6 +86,11 @@ extern NSUInteger const SW_GlobalMaxImages;
 extern NSString *const SW_PlaceholderImage;
 
 /**
+ 表单附件删除图标
+ */
+extern NSString *const SW_DeleteIcon;
+
+/**
  表单TextView字数提示文字大小
  */
 extern CGFloat const SW_LengHintFont;

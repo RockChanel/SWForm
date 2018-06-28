@@ -18,7 +18,7 @@ CGFloat const SW_InfoFont = 16.0f;
 CGFloat const SW_EdgeMargin = 10.0f;
 
 // 表单标题宽度
-CGFloat const SW_TitleWidth = 100.0f;
+CGFloat const SW_TitleWidth = 80.0f;
 
 // 表单标题高度
 CGFloat const SW_TitleHeight = 24.0f;
@@ -41,6 +41,9 @@ CGFloat const SW_LengHintFont = 12;
 
 // 表单图片条目图片加载失败占位图
 NSString *const SW_PlaceholderImage = @"SWForm.bundle/SWPlaceholderIcon";
+
+// 表单附件删除图标
+NSString *const SW_DeleteIcon = @"SWForm.bundle/SWDeleteIcon";
 
 inline CGSize SWSizeOfString(NSString *str, CGFloat font, CGSize maxSize) {
     return [str boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size;
