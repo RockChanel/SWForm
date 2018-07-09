@@ -96,15 +96,6 @@ extern NSString *const SW_DeleteIcon;
 extern CGFloat const SW_LengHintFont;
 
 /**
- 获取文字内容的Size大小
-
- @param str 文字内容
- @param font 字体大小
- @param maxSize 最大显示Size
- */
-FOUNDATION_EXPORT CGSize SWSizeOfString(NSString *str, CGFloat font, CGSize maxSize);
-
-/**
  表单条目输入框占位符字体颜色
  */
 #define SW_PLACEHOLDERCOLOR [UIColor colorWithRed:187/255.0 green:187/255.0 blue:187/255.0 alpha:1/1.0]

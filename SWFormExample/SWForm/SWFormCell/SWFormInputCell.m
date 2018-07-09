@@ -61,7 +61,7 @@
 }
 
 + (CGFloat)heightWithItem:(SWFormItem *)item {
-    CGFloat infoHeight = SWSizeOfString(item.info, SW_InfoFont, CGSizeMake(SW_SCRREN_WIDTH - (SW_TitleWidth + 3*SW_EdgeMargin), MAXFLOAT)).height;
+    CGFloat infoHeight = [item.info sizeWithFontSize:SW_InfoFont maxSize:CGSizeMake(SW_SCRREN_WIDTH - (SW_TitleWidth + 3*SW_EdgeMargin), MAXFLOAT)].height;
     return MAX(item.defaultHeight, infoHeight + 2*SW_EdgeMargin);
 }
 
