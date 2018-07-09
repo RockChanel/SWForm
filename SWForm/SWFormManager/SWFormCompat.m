@@ -44,7 +44,3 @@ NSString *const SW_PlaceholderImage = @"SWForm.bundle/SWPlaceholderIcon";
 
 // 表单附件删除图标
 NSString *const SW_DeleteIcon = @"SWForm.bundle/SWDeleteIcon";
-
-inline CGSize SWSizeOfString(NSString *str, CGFloat font, CGSize maxSize) {
-    return [str boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size;
-}

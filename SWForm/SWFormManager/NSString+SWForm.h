@@ -17,4 +17,12 @@
  */
 - (NSString *)addUnit:(NSString *)unit;
 
+/**
+ 获取字符串的Size大小
+
+ @param fontSize 字体大小
+ @param maxSize 最大显示Size
+ */
+- (CGSize)sizeWithFontSize:(CGFloat)fontSize maxSize:(CGSize)maxSize;
+
 @end
