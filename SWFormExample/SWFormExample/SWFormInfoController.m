@@ -21,6 +21,11 @@ typedef void(^EditCompletion)(void);
 
 @implementation SWFormInfoController
 
+- (void)dealloc
+{
+    NSLog(@"dealloc");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

@@ -107,6 +107,7 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(textDidChange:)
                           name:UITextViewTextDidChangeNotification object:self];
+    [defaultCenter addObserver:self selector:@selector(textDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:self];
     
     [self addObserver:self forKeyPath:kAttributedPlaceholderKey
               options:NSKeyValueObservingOptionNew context:nil];
@@ -237,12 +238,18 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     [self setPlaceholderVisibleForText:self.text];
 }
 
-- (BOOL)becomeFirstResponder
-{
+- (void)textDidBeginEditing:(NSNotification *)aNotification {
     [self setPlaceholderVisibleForText:self.text];
-    
-    return [super becomeFirstResponder];
 }
+
+/**
+ - (BOOL)becomeFirstResponder
+ {
+ [self setPlaceholderVisibleForText:self.text];
+ 
+ return [super becomeFirstResponder];
+ }
+ */
 
 - (void)setPlaceholderVisibleForText:(NSString *)text
 {
@@ -308,11 +315,11 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

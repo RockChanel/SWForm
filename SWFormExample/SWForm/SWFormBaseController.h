@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^SWFormSubmitCompletion)(void);
-
 /**
  SWFormBaseController 表单基类，所有表单必须继承于BaseController，实现了表单动态配置
  */
@@ -24,11 +22,6 @@ typedef void(^SWFormSubmitCompletion)(void);
  表单数据源，数据源格式应为 @[SWFormSection..]，否则断言会直接崩溃
  */
 @property (nonatomic, strong) NSMutableArray *mutableItems;
-
-/**
- 提交操作事件block，包含提交操作表单页面提交按钮点击事件实现回调
- */
-@property (nonatomic, copy) SWFormSubmitCompletion submitCompletion;
 
 /**
  表单页面初始化方法

@@ -10,16 +10,24 @@
 #import "SWForm.h"
 #import "SWFormHandler.h"
 
-typedef void(^GenderSelectCompletion)(NSInteger index);
-
 @interface SWFormCommonController ()<UIActionSheetDelegate>
 
-@property (nonatomic, copy) GenderSelectCompletion genderSelectCompletion;
 @property (nonatomic, strong) NSArray *genders;
+@property (nonatomic, strong) SWFormItem *name;
+@property (nonatomic, strong) SWFormItem *age;
+@property (nonatomic, strong) SWFormItem *price;
+@property (nonatomic, strong) SWFormItem *gender;
+@property (nonatomic, strong) SWFormItem *intro;
+@property (nonatomic, strong) SWFormItem *image;
 
 @end
 
 @implementation SWFormCommonController
+
+- (void)dealloc
+{
+    NSLog(@"dealloc");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,35 +41,41 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
  数据源处理
  */
 - (void)datas {
+    SWWeakSelf
     NSMutableArray *items = [NSMutableArray array];
     
-    SWFormItem *name = SWFormItem_Add(@"姓名", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeDefault);
-    name.showLength = YES;
-    [items addObject:name];
+    self.name = SWFormItem_Add(@"姓名", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeDefault);
+    self.name.showLength = YES;
+    [items addObject:_name];
     
-    SWFormItem *age = SWFormItem_Add(@"年龄", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
-    age.maxInputLength = 3;
-    age.unit = @"岁";
-    [items addObject:age];
+    self.age = SWFormItem_Add(@"年龄", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
+    self.age.maxInputLength = 3;
+    self.age.unit = @"岁";
+    [items addObject:_age];
     
-    SWFormItem *price = SWFormItem_Add(@"价格", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
-    price.maxInputLength = 5;
-    price.itemUnitType = SWFormItemUnitTypeYuan;
-    [items addObject:price];
+    self.price = SWFormItem_Add(@"价格", nil, SWFormItemTypeInput, YES, YES, UIKeyboardTypeNumberPad);
+    self.price.maxInputLength = 5;
+    self.price.itemUnitType = SWFormItemUnitTypeYuan;
+    [items addObject:_price];
     
-    SWFormItem *gender = SWFormItem_Add(@"性别", nil, SWFormItemTypeSelect, NO, YES, UIKeyboardTypeDefault);
-    gender.itemSelectCompletion = ^(SWFormItem *item) {
-        [self selectGenderWithItem:item];
+    self.gender = SWFormItem_Add(@"性别", nil, SWFormItemTypeSelect, NO, YES, UIKeyboardTypeDefault);
+    self.gender.itemSelectCompletion = ^(SWFormItem *item) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:[NSString stringWithFormat:@"请选择%@",item.title] delegate:weakSelf cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+        for (int i = 0; i < weakSelf.genders.count; i++) {
+            [actionSheet addButtonWithTitle:weakSelf.genders[i]];
+        }
+        actionSheet.tag = 10;
+        [actionSheet showInView:weakSelf.view];
     };
-    [items addObject:gender];
+    [items addObject:_gender];
     
-    SWFormItem *intro = SWFormItem_Add(@"个人简介", @"这是个人简介", SWFormItemTypeTextViewInput, YES, NO, UIKeyboardTypeDefault);
-    intro.showLength = YES;
-    [items addObject:intro];
+    self.intro = SWFormItem_Add(@"个人简介", @"这是个人简介", SWFormItemTypeTextViewInput, YES, NO, UIKeyboardTypeDefault);
+    self.intro.showLength = YES;
+    [items addObject:_intro];
     
-    SWFormItem *image = SWFormItem_Add(@"附件", nil, SWFormItemTypeImage, YES, NO, UIKeyboardTypeDefault);
-    image.images = @[@"http://imgsrc.baidu.com/image/c0%3Dpixel_huitu%2C0%2C0%2C294%2C40/sign=f04093d6da00baa1ae214ffb2e68dc7e/34fae6cd7b899e5160ce642e49a7d933c8950d43.jpg", @"http://imgsrc.baidu.com/image/c0%3Dpixel_huitu%2C0%2C0%2C294%2C40/sign=b360ab28790e0cf3b4fa46bb633e9773/e850352ac65c10387071c8f8b9119313b07e89f8.jpg", @""];
-    [items addObject:image];
+    self.image = SWFormItem_Add(@"附件", nil, SWFormItemTypeImage, YES, NO, UIKeyboardTypeDefault);
+    self.image.images = @[@"http://imgsrc.baidu.com/image/c0%3Dpixel_huitu%2C0%2C0%2C294%2C40/sign=f04093d6da00baa1ae214ffb2e68dc7e/34fae6cd7b899e5160ce642e49a7d933c8950d43.jpg", @"http://imgsrc.baidu.com/image/c0%3Dpixel_huitu%2C0%2C0%2C294%2C40/sign=b360ab28790e0cf3b4fa46bb633e9773/e850352ac65c10387071c8f8b9119313b07e89f8.jpg", @""];
+    [items addObject:_image];
     
     SWFormSectionItem *sectionItem = SWSectionItem(items);
     //    sectionItem.headerHeight = 10;
@@ -70,32 +84,6 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
     [self.mutableItems addObject:sectionItem];
     
     self.formTableView.tableFooterView = [self footerView];
-    
-    // 性别选择事件回调
-    __weak typeof(self) weakSelf = self;
-    self.genderSelectCompletion = ^(NSInteger index) {
-        if (index!=0) {
-            gender.info = weakSelf.genders[index-1];
-            [weakSelf.formTableView reloadData];
-        }
-    };
-    
-    // 确定按钮点击事件回调
-    self.submitCompletion = ^{
-        
-        NSLog(@"提交按钮点击");
-        // 这里只是简单描述校验逻辑，可根据自身需求封装数据校验逻辑
-        [SWFormHandler sw_checkFormNullDataWithWithDatas:weakSelf.mutableItems success:^{
-            
-            NSLog(@"selectImages === %@", image.selectImages);
-            //NSLog(@"images === %@", image.images);
-            NSLog(@"gender === %@", gender.info);
-            NSLog(@"name === %@", name.info);
-            
-        } failure:^(NSString *error) {
-            NSLog(@"error====%@",error);
-        }];
-    };
 }
 
 /**
@@ -116,24 +104,27 @@ typedef void(^GenderSelectCompletion)(NSInteger index);
     return footer;
 }
 
-- (void)selectGenderWithItem:(SWFormItem *)item{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:[NSString stringWithFormat:@"请选择%@",item.title] delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
-    for (int i = 0; i < self.genders.count; i++) {
-        [actionSheet addButtonWithTitle:self.genders[i]];
-    }
-    actionSheet.tag = 10;
-    [actionSheet showInView:self.view];
-}
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet.tag == 10) {
-        self.genderSelectCompletion(buttonIndex);
+        if (buttonIndex != 0) {
+            self.gender.info = self.genders[buttonIndex-1];
+            [self.formTableView reloadData];
+        }
     }
 }
 
 - (void)submitAction {
-    self.submitCompletion();
+    [SWFormHandler sw_checkFormNullDataWithWithDatas:self.mutableItems success:^{
+        
+        NSLog(@"selectImages === %@", self.image.selectImages);
+        //NSLog(@"images === %@", image.images);
+        NSLog(@"gender === %@", self.gender.info);
+        NSLog(@"name === %@", self.name.info);
+        
+    } failure:^(NSString *error) {
+        NSLog(@"error====%@",error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

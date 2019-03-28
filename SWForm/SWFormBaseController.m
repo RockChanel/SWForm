@@ -82,13 +82,14 @@
     NSParameterAssert([sectionItem.items[indexPath.row] isKindOfClass:[SWFormItem class]]);
     SWFormItem *item = sectionItem.items[indexPath.row];
     
+    SWWeakSelf
     // 表单条目类别判断
     if (item.itemType == SWFormItemTypeTextViewInput) {
         static NSString *textViewInput_cell_id = @"textViewInput_cell_id";
         SWFormTextViewInputCell *cell = [tableView textViewInputCellWithId:textViewInput_cell_id];
         cell.item = item;
         cell.textViewInputCompletion = ^(NSString *text) {
-            [self updateTextViewInputWithText:text indexPath:indexPath];
+            [weakSelf updateTextViewInputWithText:text indexPath:indexPath];
         };
         return cell;
     }
@@ -103,7 +104,7 @@
         SWFormImageCell *cell = [tableView imageCellWithId:image_cell_id];
         cell.item = item;
         cell.imageCompletion = ^(NSArray *images) {
-            [self updateImageWithImages:images indexPath:indexPath];
+            [weakSelf updateImageWithImages:images indexPath:indexPath];
         };
         return cell;
     }
@@ -112,7 +113,7 @@
         SWFormInputCell *cell = [tableView inputCellWithId:input_cell_id];
         cell.item = item;
         cell.inputCompletion = ^(NSString *text) {
-            [self updateInputWithText:text indexPath:indexPath];
+            [weakSelf updateInputWithText:text indexPath:indexPath];
         };
         return cell;
     }

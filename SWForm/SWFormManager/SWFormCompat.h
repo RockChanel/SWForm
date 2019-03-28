@@ -113,3 +113,6 @@ extern CGFloat const SW_LengHintFont;
  获取屏幕宽度
  */
 #define SW_SCRREN_WIDTH [UIScreen mainScreen].bounds.size.width
+
+/// 弱引用
+#define SWWeakSelf __weak typeof(self) weakSelf = self;

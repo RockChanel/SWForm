@@ -12,5 +12,6 @@
 #import "SWFormItem.h"
 #import "SWFormSectionItem.h"
 #import "SWFormHandler.h"
+#import "SWFormCompat.h"
 
 #endif /* SWForm_h */
